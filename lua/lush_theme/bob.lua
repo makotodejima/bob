@@ -52,6 +52,22 @@ local palette = {
   highlight_med = hsl(0, 0, 16),
   highlight_high = hsl(0, 0, 16),
   none = "NONE",
+  p = {
+    green = "#3d7068",
+    teal = "#177E89",
+    sky_blue = "#068d9d",
+    light_blue = "#A0CFD3",
+    ash = "#BED8D4",
+    blue = "#2D739C",
+    red = "#9B2915",
+    eggplant = "#6B4D57",
+    chocolate = "#4C061D",
+    emerald = "#32DE8A",
+    dark_violet = "#5B618A",
+    wheat = "#EFD6AC",
+    mahogany = "#C44900",
+    auburn = "#AC3931",
+  },
 }
 
 -- LSP/Linters mistakenly show `undefined global` errors in the spec, they may
@@ -73,7 +89,7 @@ local theme = lush(function(injected_functions)
     ColorColumn { bg = palette.highlight_med }, -- Columns set with 'colorcolumn'
     -- Conceal        { }, -- Placeholder characters substituted for concealed text (see 'conceallevel')
     Cursor { fg = "bg", bg = "fg" }, -- Character under the cursor
-    IncSearch { bg = palette.blue, fg = palette.base.fg }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+    IncSearch { bg = palette.blue, fg = palette.blue.darken(80) }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
     CurSearch { IncSearch }, -- Highlighting a search pattern under the cursor (see 'hlsearch')
     Substitute { IncSearch }, -- |:substitute| replacement text highlighting
     -- lCursor        { }, -- Character under the cursor when |language-mapping| is used (see 'guicursor')
