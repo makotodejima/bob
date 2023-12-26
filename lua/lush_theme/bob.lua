@@ -49,24 +49,30 @@ local palette = {
   base = { bg = hsl(120, 30, 5), fg = hsl(0, 0, 80) },
   blue = hsl(220, 80, 60),
   highlight_low = "#21202e",
-  highlight_med = hsl(0, 0, 16),
-  highlight_high = hsl(0, 0, 16),
+  highlight_med = hsl(0, 0, 10),
+  highlight_high = hsl(0, 0, 20),
   none = "NONE",
+  diff = {
+    added = hsl(170, 60, 20),
+    deleted = hsl(11, 51, 23),
+  },
   p = {
-    green = "#3d7068",
-    teal = "#177E89",
-    sky_blue = "#068d9d",
-    light_blue = "#A0CFD3",
-    ash = "#BED8D4",
-    blue = "#2D739C",
-    red = "#9B2915",
-    eggplant = "#6B4D57",
-    chocolate = "#4C061D",
-    emerald = "#32DE8A",
-    dark_violet = "#5B618A",
-    wheat = "#EFD6AC",
-    mahogany = "#C44900",
-    auburn = "#AC3931",
+    emerald = hsl(151, 72, 53),
+    green = hsl(171, 29, 34),
+    dark_green = hsl(185, 20, 24),
+    blue = hsl(202, 55, 39),
+    teal = hsl(185, 71, 31),
+    sky_blue = hsl(186, 93, 32),
+    light_blue = hsl(185, 37, 73),
+    ash = hsl(171, 25, 80),
+    dark_violet = hsl(232, 21, 45),
+    eggplant = hsl(340, 16, 36),
+    mahogany = hsl(22, 100, 38),
+    auburn = hsl(4, 56, 40),
+    red = hsl(9, 76, 35),
+    chocolate = hsl(340, 85, 16),
+    chill = hsl(30, 16, 55),
+    wheat = hsl(38, 68, 80),
   },
 }
 
@@ -89,7 +95,7 @@ local theme = lush(function(injected_functions)
     ColorColumn { bg = palette.highlight_med }, -- Columns set with 'colorcolumn'
     -- Conceal        { }, -- Placeholder characters substituted for concealed text (see 'conceallevel')
     Cursor { fg = "bg", bg = "fg" }, -- Character under the cursor
-    IncSearch { bg = palette.blue, fg = palette.blue.darken(80) }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+    IncSearch { bg = palette.p.emerald, fg = palette.p.emerald.darken(80) }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
     CurSearch { IncSearch }, -- Highlighting a search pattern under the cursor (see 'hlsearch')
     Substitute { IncSearch }, -- |:substitute| replacement text highlighting
     -- lCursor        { }, -- Character under the cursor when |language-mapping| is used (see 'guicursor')
@@ -97,9 +103,9 @@ local theme = lush(function(injected_functions)
     -- CursorColumn   { }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
     -- CursorLine     { }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
     -- Directory      { }, -- Directory names (and other special names in listings)
-    -- DiffAdd        { }, -- Diff mode: Added line |diff.txt|
+    DiffAdd { bg = palette.diff.added }, -- Diff mode: Added line |diff.txt|
     -- DiffChange     { }, -- Diff mode: Changed line |diff.txt|
-    -- DiffDelete     { }, -- Diff mode: Deleted line |diff.txt|
+    DiffDelete { bg = palette.diff.deleted }, -- Diff mode: Deleted line |diff.txt|
     -- DiffText       { }, -- Diff mode: Changed text within a changed line |diff.txt|
     -- EndOfBuffer    { }, -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
     -- TermCursor     { }, -- Cursor in a focused terminal
@@ -182,7 +188,7 @@ local theme = lush(function(injected_functions)
     -- Repeat         { }, --   for, do, while, etc.
     -- Label          { }, --   case, default, etc.
     -- Operator       { }, --   "sizeof", "+", "*", etc.
-    -- Keyword        { }, --   any other keyword
+    Keyword { fg = palette.p.chill }, --   any other keyword
     -- Exception      { }, --   try, catch, throw
 
     -- PreProc        { }, -- (*) Generic Preprocessor
@@ -329,7 +335,7 @@ local theme = lush(function(injected_functions)
     TelescopeResultsDiffUntracked { NonText }, -- TelescopeResultsDiffUntracked xxx links to NonText
     TelescopePreviewHyphen { NonText }, -- TelescopePreviewHyphen xxx links to NonText
     GitSignsCurrentLineBlame { NonText }, -- GitSignsCurrentLineBlame xxx links to NonText
-    Directory { fg = "#928374", gui = "bold" }, -- Directory      xxx cterm=bold gui=bold guifg=#928374
+    Directory { fg = "#928374" }, -- Directory      xxx cterm=bold gui=bold guifg=#928374
     TelescopePreviewDirectory { Directory }, -- TelescopePreviewDirectory xxx links to Directory
     TelescopePreviewDate { Directory }, -- TelescopePreviewDate xxx links to Directory
     OilDir { Directory }, -- OilDir         xxx links to Directory
@@ -374,22 +380,22 @@ local theme = lush(function(injected_functions)
     netrwData { Folded }, -- netrwData      xxx links to Folded
     netrwGray { Folded }, -- netrwGray      xxx links to Folded
     FoldColumn { fg = "#7c9ffa", bg = "#080e07" }, -- FoldColumn     xxx guifg=#7c9ffa guibg=#080e07
-    DiffAdd { fg = "#cccccc", bg = "#204437" }, -- DiffAdd        xxx guifg=#cccccc guibg=#204437
-    GitSignsAddInline { DiffAdd }, -- GitSignsAddInline xxx links to DiffAdd
-    TelescopeResultsDiffAdd { DiffAdd }, -- TelescopeResultsDiffAdd xxx links to DiffAdd
-    GitSignsAddLn { DiffAdd }, -- GitSignsAddLn  xxx links to DiffAdd
-    GitSignsAddPreview { DiffAdd }, -- GitSignsAddPreview xxx links to DiffAdd
+    -- DiffAdd { fg = "#cccccc", bg = "#204437" }, -- DiffAdd        xxx guifg=#cccccc guibg=#204437
+    -- GitSignsAddInline { DiffAdd }, -- GitSignsAddInline xxx links to DiffAdd
+    -- TelescopeResultsDiffAdd { DiffAdd }, -- TelescopeResultsDiffAdd xxx links to DiffAdd
+    -- GitSignsAddLn { DiffAdd }, -- GitSignsAddLn  xxx links to DiffAdd
+    -- GitSignsAddPreview { DiffAdd }, -- GitSignsAddPreview xxx links to DiffAdd
     DiffChange { bg = "#1f2325" }, -- DiffChange     xxx guibg=#1f2325
     GitSignsChangeInline { DiffChange }, -- GitSignsChangeInline xxx links to DiffChange
     TelescopeResultsDiffChange { DiffChange }, -- TelescopeResultsDiffChange xxx links to DiffChange
     netrwLib { DiffChange }, -- netrwLib       xxx links to DiffChange
     netrwMakefile { DiffChange }, -- netrwMakefile  xxx links to DiffChange
     GitSignsChangeLn { DiffChange }, -- GitSignsChangeLn xxx links to DiffChange
-    DiffDelete { bg = "#59281d" }, -- DiffDelete     xxx guibg=#59281d
-    GitSignsDeleteInline { DiffDelete }, -- GitSignsDeleteInline xxx links to DiffDelete
-    TelescopeResultsDiffDelete { DiffDelete }, -- TelescopeResultsDiffDelete xxx links to DiffDelete
-    GitSignsDeletePreview { DiffDelete }, -- GitSignsDeletePreview xxx links to DiffDelete
-    GitSignsDeleteVirtLn { DiffDelete }, -- GitSignsDeleteVirtLn xxx links to DiffDelete
+    -- DiffDelete { bg = "#59281d" }, -- DiffDelete     xxx guibg=#59281d
+    -- GitSignsDeleteInline { DiffDelete }, -- GitSignsDeleteInline xxx links to DiffDelete
+    -- TelescopeResultsDiffDelete { DiffDelete }, -- TelescopeResultsDiffDelete xxx links to DiffDelete
+    -- GitSignsDeletePreview { DiffDelete }, -- GitSignsDeletePreview xxx links to DiffDelete
+    -- GitSignsDeleteVirtLn { DiffDelete }, -- GitSignsDeleteVirtLn xxx links to DiffDelete
     DiffText { fg = "#cccccc", bg = "#204437" }, -- DiffText       xxx guifg=#cccccc guibg=#204437
     SignColumn { bg = "#080e07" }, -- SignColumn     xxx guibg=#080e07
     Conceal { fg = "lightgrey", bg = "darkgrey" }, -- Conceal        xxx ctermfg=7 ctermbg=242 guifg=LightGrey guibg=DarkGrey
@@ -506,7 +512,7 @@ local theme = lush(function(injected_functions)
     NvimAssignment { Operator }, -- NvimAssignment xxx links to Operator
     NvimOperator { Operator }, -- NvimOperator   xxx links to Operator
     TelescopeResultsOperator { Operator }, -- TelescopeResultsOperator xxx links to Operator
-    Keyword { fg = "#a89684" }, -- Keyword        xxx guifg=#a89684
+    -- Keyword { fg = "#a89684" }, -- Keyword        xxx guifg=#a89684
     Exception { Keyword }, -- Exception      xxx links to Keyword
     sym "@keyword" { Keyword }, -- @keyword       xxx links to Keyword
     sym "@text.literal.block.markdown" { Keyword }, -- @text.literal.block.markdown xxx links to Keyword
@@ -526,7 +532,7 @@ local theme = lush(function(injected_functions)
     sym "@function.macro" { Macro }, -- @function.macro xxx links to Macro
     sym "@lsp.type.macro" { Macro }, -- @lsp.type.macro xxx links to Macro
     PreCondit { fg = "#7189a8", gui = "bold" }, -- PreCondit      xxx cterm=bold gui=bold guifg=#7189a8
-    Type { fg = "#ebcfb2", gui = "bold" }, -- Type           xxx cterm=bold gui=bold guifg=#ebcfb2
+    Type { fg = "#ebcfb2" }, -- Type           xxx cterm=bold gui=bold guifg=#ebcfb2
     StorageClass { Type }, -- StorageClass   xxx links to Type
     Structure { Type }, -- Structure      xxx links to Type
     Typedef { Type }, -- Typedef        xxx links to Type
@@ -563,7 +569,7 @@ local theme = lush(function(injected_functions)
     DiagnosticFloatingInfo { DiagnosticInfo }, -- DiagnosticFloatingInfo xxx links to DiagnosticInfo
     DiagnosticSignInfo { DiagnosticInfo }, -- DiagnosticSignInfo xxx links to DiagnosticInfo
     OilCreate { DiagnosticInfo }, -- OilCreate      xxx links to DiagnosticInfo
-    DiagnosticHint { fg = "#a1a1d5" }, -- DiagnosticHint xxx guifg=#a1a1d5
+    DiagnosticHint { fg = palette.p.dark_violet }, -- DiagnosticHint xxx guifg=#a1a1d5
     DiagnosticVirtualTextHint { DiagnosticHint }, -- DiagnosticVirtualTextHint xxx links to DiagnosticHint
     DiagnosticFloatingHint { DiagnosticHint }, -- DiagnosticFloatingHint xxx links to DiagnosticHint
     DiagnosticSignHint { DiagnosticHint }, -- DiagnosticSignHint xxx links to DiagnosticHint
@@ -600,7 +606,7 @@ local theme = lush(function(injected_functions)
     sym "@tag" { fg = "#7189a8" }, -- @tag           xxx guifg=#7189a8
     MatchParen { gui = "bold,underline" }, -- MatchParen     xxx cterm=bold,underline gui=bold,underline
     Ignore { fg = "bg" }, -- Ignore         xxx ctermfg=0 guifg=bg
-    NvimInternalError { fg = "red", bg = "red" }, -- NvimInternalError xxx ctermfg=9 ctermbg=9 guifg=Red guibg=Red
+    NvimInternalError { bg = "red" }, -- NvimInternalError xxx ctermfg=9 ctermbg=9 guifg=Red guibg=Red
     NvimFigureBrace { NvimInternalError }, -- NvimFigureBrace xxx links to NvimInternalError
     NvimSingleQuotedUnknownEscape { NvimInternalError }, -- NvimSingleQuotedUnknownEscape xxx links to NvimInternalError
     NvimInvalidSingleQuotedUnknownEscape { NvimInternalError }, -- NvimInvalidSingleQuotedUnknownEscape xxx links to NvimInternalError
