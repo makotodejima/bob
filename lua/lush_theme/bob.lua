@@ -1,52 +1,8 @@
---
--- Built with,
---
---        ,gggg,
---       d8" "8I                         ,dPYb,
---       88  ,dP                         IP'`Yb
---    8888888P"                          I8  8I
---       88                              I8  8'
---       88        gg      gg    ,g,     I8 dPgg,
---  ,aa,_88        I8      8I   ,8'8,    I8dP" "8I
--- dP" "88P        I8,    ,8I  ,8'  Yb   I8P    I8
--- Yb,_,d88b,,_   ,d8b,  ,d8b,,8'_   8) ,d8     I8,
---  "Y8P"  "Y888888P'"Y88P"`Y8P' "YY8P8P88P     `Y8
---
-
--- This is a starter colorscheme for use with Lush,
--- for usage guides, see :h lush or :LushRunTutorial
-
---
--- Note: Because this is a lua file, vim will append it to the runtime,
---       which means you can require(...) it in other lua code (this is useful),
---       but you should also take care not to conflict with other libraries.
---
---       (This is a lua quirk, as it has somewhat poor support for namespacing.)
---
---       Basically, name your file,
---
---       "super_theme/lua/lush_theme/super_theme_dark.lua",
---
---       not,
---
---       "super_theme/lua/dark.lua".
---
---       With that caveat out of the way...
---
-
--- Enable lush.ify on this file, run:
---
---  `:Lushify`
---
---  or
---
---  `:lua require('lush').ify()`
-
 local lush = require "lush"
 local hsl = lush.hsl
 
 local palette = {
-  base = { bg = hsl(120, 30, 5), fg = hsl(0, 0, 80) },
+  base = { bg = hsl(120, 30, 5), fg = hsl(0, 0, 75) },
   blue = hsl(220, 80, 60),
   highlight_low = "#21202e",
   highlight_med = hsl(0, 0, 10),
@@ -58,13 +14,15 @@ local palette = {
   },
   p = {
     emerald = hsl(151, 72, 53),
-    green = hsl(171, 29, 34),
+    light_green = hsl(160, 18, 42),
+    green = hsl(190, 35, 25),
     dark_green = hsl(185, 20, 24),
     blue = hsl(202, 55, 39),
+    smooth_blue = hsl(214, 24, 55),
+    smooth_navy = hsl(215, 27, 36),
     teal = hsl(185, 71, 31),
     sky_blue = hsl(186, 93, 32),
     light_blue = hsl(185, 37, 73),
-    ash = hsl(171, 25, 80),
     dark_violet = hsl(232, 21, 45),
     eggplant = hsl(340, 16, 36),
     mahogany = hsl(22, 100, 38),
@@ -72,7 +30,9 @@ local palette = {
     red = hsl(9, 76, 35),
     chocolate = hsl(340, 85, 16),
     chill = hsl(30, 16, 55),
-    wheat = hsl(38, 68, 80),
+    wheat = hsl(30, 56, 77),
+    mute = hsl(6, 6, 32),
+    ash = hsl(205, 19, 38),
   },
 }
 
@@ -171,13 +131,13 @@ local theme = lush(function(injected_functions)
     --
     -- Uncomment and edit if you want more specific syntax highlighting.
 
-    -- Comment        { }, -- Any comment
+    Comment { fg = palette.p.mute, gui = "italic" }, -- Any comment
 
-    -- Constant       { }, -- (*) Any constant
+    Constant { fg = palette.base.fg }, -- (*) Any constant
     -- String         { }, --   A string constant: "this is a string"
     -- Character      { }, --   A character constant: 'c', '\n'
-    -- Number         { }, --   A number constant: 234, 0xff
-    -- Boolean        { }, --   A boolean constant: TRUE, false
+    Number { fg = palette.base.fg }, --   A number constant: 234, 0xff
+    Boolean { fg = palette.base.fg, gui = "bold" }, --   A boolean constant: TRUE, false
     -- Float          { }, --   A floating point constant: 2.3e10
 
     -- Identifier     { }, -- (*) Any variable name
@@ -188,7 +148,7 @@ local theme = lush(function(injected_functions)
     -- Repeat         { }, --   for, do, while, etc.
     -- Label          { }, --   case, default, etc.
     -- Operator       { }, --   "sizeof", "+", "*", etc.
-    Keyword { fg = palette.p.chill }, --   any other keyword
+    Keyword { fg = "#3a6265" }, --   any other keyword
     -- Exception      { }, --   try, catch, throw
 
     -- PreProc        { }, -- (*) Generic Preprocessor
@@ -197,7 +157,7 @@ local theme = lush(function(injected_functions)
     -- Macro          { }, --   Same as Define
     -- PreCondit      { }, --   Preprocessor #if, #else, #endif, etc.
 
-    -- Type           { }, -- (*) int, long, char, etc.
+    Type { fg = palette.p.wheat }, -- (*) int, long, char, etc.
     -- StorageClass   { }, --   static, register, volatile, etc.
     -- Structure      { }, --   struct, union, enum, etc.
     -- Typedef        { }, --   A typedef
@@ -286,7 +246,6 @@ local theme = lush(function(injected_functions)
     -- sym"@define"            { }, -- Define
     -- sym"@macro"             { }, -- Macro
     -- sym"@string"            { }, -- String
-    -- sym"@string.escape"     { }, -- SpecialChar
     -- sym"@string.special"    { }, -- SpecialChar
     -- sym"@character"         { }, -- Character
     -- sym"@character.special" { }, -- SpecialChar
@@ -324,7 +283,6 @@ local theme = lush(function(injected_functions)
     --
     --
     --
-    --
 
     SpecialKey { fg = "#7c9ffa" }, -- SpecialKey     xxx guifg=#7c9ffa
     netrwSuffixes { SpecialKey }, -- netrwSuffixes  xxx links to SpecialKey
@@ -352,7 +310,7 @@ local theme = lush(function(injected_functions)
     LineNrBelow { LineNr }, -- LineNrBelow    xxx links to LineNr
     TelescopeResultsLineNr { LineNr }, -- TelescopeResultsLineNr xxx links to LineNr
     TreesitterContextLineNumber { LineNr }, -- TreesitterContextLineNumber xxx links to LineNr
-    CursorLineNr { fg = "#4d5766", gui = "bold", bg = "#141414" }, -- CursorLineNr   xxx cterm=bold gui=bold guifg=#4d5766 guibg=#141414
+    CursorLineNr { fg = "#4d5766", bg = "#141414" }, -- CursorLineNr   xxx cterm=bold gui=bold guifg=#4d5766 guibg=#141414
     MarkSignNumHL { CursorLineNr }, -- MarkSignNumHL  xxx links to CursorLineNr
     CursorLineSign { bg = "#141414" }, -- CursorLineSign xxx guibg=#141414
     CursorLineFold { fg = "#7c9ffa", bg = "#141414" }, -- CursorLineFold xxx guifg=#7c9ffa guibg=#141414
@@ -413,10 +371,10 @@ local theme = lush(function(injected_functions)
     netrwMarkFile { TabLineSel }, -- netrwMarkFile  xxx links to TabLineSel
     TabLineFill { gui = "reverse" }, -- TabLineFill    xxx cterm=reverse gui=reverse
     CursorColumn { bg = "grey40" }, -- CursorColumn   xxx ctermbg=242 guibg=Grey40
-    CursorLine { bg = "#141414" }, -- CursorLine     xxx guibg=#141414
+    CursorLine { bg = "#171717" }, -- CursorLine     xxx guibg=#141414
     -- ColorColumn { bg = "#282828" }, -- ColorColumn    xxx guibg=#282828
     Whitespace { fg = "#7c9ffa" }, -- Whitespace     xxx guifg=#7c9ffa
-    NormalNC { fg = "#cccccc", bg = "#080e07" }, -- NormalNC       xxx guifg=#cccccc guibg=#080e07
+    NormalNC { fg = "#cccccc", bg = hsl(110, 30, 4) }, -- NormalNC       xxx guifg=#cccccc guibg=#080e07
     NormalFloat { bg = "#2a2f37" }, -- NormalFloat    xxx guibg=#2a2f37
     NotifyBackground { NormalFloat }, -- NotifyBackground xxx links to NormalFloat
     NotifyTRACEBody { NormalFloat }, -- NotifyTRACEBody xxx links to NormalFloat
@@ -445,31 +403,31 @@ local theme = lush(function(injected_functions)
     NvimInvalid { Error }, -- NvimInvalid    xxx links to Error
     TSQueryLinterError { Error }, -- TSQueryLinterError xxx links to Error
     Todo { fg = "#080e07", bg = "#7c9ffa" }, -- Todo           xxx guifg=#080e07 guibg=#7c9ffa
-    sym "@text.todo" { Todo }, -- @text.todo     xxx links to Todo
+    sym "@comment.todo" { Todo }, -- @text.todo     xxx links to Todo
     String { fg = "#a89684" }, -- String         xxx guifg=#a89684
     sym "@string" { String }, -- @string        xxx links to String
     NvimString { String }, -- NvimString     xxx links to String
-    TelescopePreviewSize { String }, -- TelescopePreviewSize xxx links to String
-    TelescopePreviewExecute { String }, -- TelescopePreviewExecute xxx links to String
+    -- TelescopePreviewSize { String }, -- TelescopePreviewSize xxx links to String
+    -- TelescopePreviewExecute { String }, -- TelescopePreviewExecute xxx links to String
     TSPlaygroundLang { String }, -- TSPlaygroundLang xxx links to String
-    Constant { fg = "#ffffff", gui = "bold" }, -- Constant       xxx cterm=bold gui=bold guifg=#ffffff
+    -- Constant { fg = "#ffffff", gui = "bold" }, -- Constant       xxx cterm=bold gui=bold guifg=#ffffff
     Character { Constant }, -- Character      xxx links to Constant
     sym "@constant" { Constant }, -- @constant      xxx links to Constant
     sym "@lsp.type.enumMember" { Constant }, -- @lsp.type.enumMember xxx links to Constant
-    TelescopePreviewRead { Constant }, -- TelescopePreviewRead xxx links to Constant
-    TelescopePreviewBlock { Constant }, -- TelescopePreviewBlock xxx links to Constant
-    TelescopePreviewCharDev { Constant }, -- TelescopePreviewCharDev xxx links to Constant
-    TelescopePreviewPipe { Constant }, -- TelescopePreviewPipe xxx links to Constant
-    TelescopeResultsConstant { Constant }, -- TelescopeResultsConstant xxx links to Constant
-    TelescopePreviewGroup { Constant }, -- TelescopePreviewGroup xxx links to Constant
-    TelescopePreviewUser { Constant }, -- TelescopePreviewUser xxx links to Constant
-    Number { fg = "#ffffff" }, -- Number         xxx guifg=#ffffff
+    -- TelescopePreviewRead { Constant }, -- TelescopePreviewRead xxx links to Constant
+    -- TelescopePreviewBlock { Constant }, -- TelescopePreviewBlock xxx links to Constant
+    -- TelescopePreviewCharDev { Constant }, -- TelescopePreviewCharDev xxx links to Constant
+    -- TelescopePreviewPipe { Constant }, -- TelescopePreviewPipe xxx links to Constant
+    -- TelescopeResultsConstant { Constant }, -- TelescopeResultsConstant xxx links to Constant
+    -- TelescopePreviewGroup { Constant }, -- TelescopePreviewGroup xxx links to Constant
+    -- TelescopePreviewUser { Constant }, -- TelescopePreviewUser xxx links to Constant
+    -- Number { fg = "#ffffff" }, -- Number         xxx guifg=#ffffff
     Float { Number }, -- Float          xxx links to Number
     sym "@number" { Number }, -- @number        xxx links to Number
     NvimNumber { Number }, -- NvimNumber     xxx links to Number
     TelescopeResultsNumber { Number }, -- TelescopeResultsNumber xxx links to Number
     netrwQHTopic { Number }, -- netrwQHTopic   xxx links to Number
-    Boolean { fg = "#ffffff", gui = "bold" }, -- Boolean        xxx cterm=bold gui=bold guifg=#ffffff
+    -- Boolean { fg = "#ffffff", gui = "bold" }, -- Boolean        xxx cterm=bold gui=bold guifg=#ffffff
     sym "@boolean" { Boolean }, -- @boolean       xxx links to Boolean
     Function { fg = "#d5bba1" }, -- Function       xxx guifg=#d5bba1
     sym "@function" { Function }, -- @function      xxx links to Function
@@ -477,9 +435,9 @@ local theme = lush(function(injected_functions)
     sym "@lsp.type.decorator" { Function }, -- @lsp.type.decorator xxx links to Function
     sym "@lsp.type.function" { Function }, -- @lsp.type.function xxx links to Function
     sym "@lsp.type.method" { Function }, -- @lsp.type.method xxx links to Function
-    TelescopeResultsFunction { Function }, -- TelescopeResultsFunction xxx links to Function
-    TelescopeResultsField { Function }, -- TelescopeResultsField xxx links to Function
-    TelescopeResultsClass { Function }, -- TelescopeResultsClass xxx links to Function
+    -- TelescopeResultsFunction { Function }, -- TelescopeResultsFunction xxx links to Function
+    -- TelescopeResultsField { Function }, -- TelescopeResultsField xxx links to Function
+    -- TelescopeResultsClass { Function }, -- TelescopeResultsClass xxx links to Function
     LspInfoList { Function }, -- LspInfoList    xxx links to Function
     netrwClassify { Function }, -- netrwClassify  xxx links to Function
     netrwHelpCmd { Function }, -- netrwHelpCmd   xxx links to Function
@@ -532,7 +490,7 @@ local theme = lush(function(injected_functions)
     sym "@function.macro" { Macro }, -- @function.macro xxx links to Macro
     sym "@lsp.type.macro" { Macro }, -- @lsp.type.macro xxx links to Macro
     PreCondit { fg = "#7189a8", gui = "bold" }, -- PreCondit      xxx cterm=bold gui=bold guifg=#7189a8
-    Type { fg = "#ebcfb2" }, -- Type           xxx cterm=bold gui=bold guifg=#ebcfb2
+    -- Type { fg = "#ebcfb2" }, -- Type           xxx cterm=bold gui=bold guifg=#ebcfb2
     StorageClass { Type }, -- StorageClass   xxx links to Type
     Structure { Type }, -- Structure      xxx links to Type
     Typedef { Type }, -- Typedef        xxx links to Type
@@ -542,13 +500,12 @@ local theme = lush(function(injected_functions)
     NvimOptionSigil { Type }, -- NvimOptionSigil xxx links to Type
     TelescopeMultiSelection { Type }, -- TelescopeMultiSelection xxx links to Type
     LspInfoFiletype { Type }, -- LspInfoFiletype xxx links to Type
-    Special { fg = "#696969" }, -- Special        xxx guifg=#696969
+    Special { fg = "#616769" }, -- Special        xxx guifg=#696969
     Tag { Special }, -- Tag            xxx links to Special
-    SpecialChar { Special }, -- SpecialChar    xxx links to Special
     Delimiter { Special }, -- Delimiter      xxx links to Special
     SpecialComment { Special }, -- SpecialComment xxx links to Special
     Debug { Special }, -- Debug          xxx links to Special
-    sym "@constant.builtin" { Special }, -- @constant.builtin xxx links to Special
+    sym "@constant.builtin" { fg = palette.p.smooth_navy }, -- @constant.builtin xxx links to Special
     TelescopePreviewLink { Special }, -- TelescopePreviewLink xxx links to Special
     OilChange { Special }, -- OilChange      xxx links to Special
     netrwLink { Special }, -- netrwLink      xxx links to Special
@@ -578,14 +535,14 @@ local theme = lush(function(injected_functions)
     DiagnosticVirtualTextOk { DiagnosticOk }, -- DiagnosticVirtualTextOk xxx links to DiagnosticOk
     DiagnosticFloatingOk { DiagnosticOk }, -- DiagnosticFloatingOk xxx links to DiagnosticOk
     DiagnosticSignOk { DiagnosticOk }, -- DiagnosticSignOk xxx links to DiagnosticOk
-    DiagnosticUnderlineError { sp = "#b1501b" }, -- DiagnosticUnderlineError xxx guisp=#b1501b
-    DiagnosticUnderlineWarn { sp = "#d6b147" }, -- DiagnosticUnderlineWarn xxx guisp=#d6b147
-    DiagnosticUnderlineInfo { sp = "#a1d5a1" }, -- DiagnosticUnderlineInfo xxx guisp=#a1d5a1
-    DiagnosticUnderlineHint { sp = "#a1a1d5" }, -- DiagnosticUnderlineHint xxx guisp=#a1a1d5
+    DiagnosticUnderlineError { sp = "#b1501b", gui = "underline" }, -- DiagnosticUnderlineError xxx guisp=#b1501b
+    DiagnosticUnderlineWarn { sp = "#d6b147", gui = "underline" }, -- DiagnosticUnderlineWarn xxx guisp=#d6b147
+    DiagnosticUnderlineInfo { sp = "#a1d5a1", gui = "underline" }, -- DiagnosticUnderlineInfo xxx guisp=#a1d5a1
+    DiagnosticUnderlineHint { sp = "#a1a1d5", gui = "underline" }, -- DiagnosticUnderlineHint xxx guisp=#a1a1d5
     DiagnosticUnderlineOk { sp = "lightgreen", gui = "underline" }, -- DiagnosticUnderlineOk xxx cterm=underline gui=underline guisp=LightGreen
     DiagnosticDeprecated { fg = "#665d5c", gui = "italic,strikethrough" }, -- DiagnosticDeprecated xxx cterm=italic,strikethrough gui=italic,strikethrough guifg=#665d5c
     DiagnosticUnnecessary { fg = "#665d5c", gui = "italic" }, -- DiagnosticUnnecessary xxx cterm=italic gui=italic guifg=#665d5c
-    Comment { fg = "#665d5c", gui = "italic" }, -- Comment        xxx cterm=italic gui=italic guifg=#665d5c
+    -- Comment { fg = "#665d5c", gui = "italic" }, -- Comment        xxx cterm=italic gui=italic guifg=#665d5c
     sym "@text.literal" { Comment }, -- @text.literal  xxx links to Comment
     sym "@comment" { Comment }, -- @comment       xxx links to Comment
     sym "@lsp.type.comment" { Comment }, -- @lsp.type.comment xxx links to Comment
@@ -599,9 +556,13 @@ local theme = lush(function(injected_functions)
     netrwComment { Comment }, -- netrwComment   xxx links to Comment
     sym "@text.reference" { fg = "#cccccc", gui = "bold" }, -- @text.reference xxx cterm=bold gui=bold guifg=#cccccc
     Underlined { fg = "#80a0ff", gui = "underline" }, -- Underlined     xxx cterm=underline ctermfg=81 gui=underline guifg=#80a0ff
+    SpecialChar { Underlined }, -- SpecialChar    xxx links to Special
+    sym "@string.escape" { fg = "#80a0ff" }, -- SpecialChar
     sym "@text.uri" { Underlined }, -- @text.uri      xxx links to Underlined
+    sym "@markup.link.url" { Underlined },
     sym "@text.underline" { Underlined }, -- @text.underline xxx links to Underlined
     sym "@function.builtin" { fg = "#7189a8" }, -- @function.builtin xxx guifg=#7189a8
+    sym "@tag.tsx" { fg = palette.p.ash }, -- @function.builtin xxx guifg=#7189a8
     sym "@constructor" { fg = "#928374" }, -- @constructor   xxx guifg=#928374
     sym "@tag" { fg = "#7189a8" }, -- @tag           xxx guifg=#7189a8
     MatchParen { gui = "bold,underline" }, -- MatchParen     xxx cterm=bold,underline gui=bold,underline
@@ -628,24 +589,9 @@ local theme = lush(function(injected_functions)
     GitSignsUntracked { GitSignsAdd }, -- GitSignsUntracked xxx links to GitSignsAdd
     GitSignsAddNr { GitSignsAdd }, -- GitSignsAddNr  xxx links to GitSignsAdd
     LazyButtonActive { fg = "#080e07", gui = "bold", bg = "#7c9ffa" }, -- LazyButtonActive xxx cterm=bold gui=bold guifg=#080e07 guibg=#7c9ffa
-    -- NotifyDEBUGTitle { fg = "#7c9ffa" }, -- NotifyDEBUGTitle xxx guifg=#7c9ffa
-    -- NotifyDEBUGBorder { fg = "#323232", bg = "#323232" }, -- NotifyDEBUGBorder xxx guifg=#323232 guibg=#323232
-    -- NotifyTRACEBorder { fg = "#323232", bg = "#323232" }, -- NotifyTRACEBorder xxx guifg=#323232 guibg=#323232
-    -- NotifyERRORTitle { fg = "#7c9ffa" }, -- NotifyERRORTitle xxx guifg=#7c9ffa
-    -- NotifyWARNTitle { fg = "#7c9ffa" }, -- NotifyWARNTitle xxx guifg=#7c9ffa
-    IblScope { fg = "#4d5766" }, -- IblScope       xxx guifg=#4d5766
-    IblIndent { fg = "#282828" }, -- IblIndent      xxx guifg=#282828
     IndentBlanklineContextStart { sp = "#4d5766", gui = "underline" }, -- IndentBlanklineContextStart xxx cterm=underline gui=underline guisp=#4d5766
     IndentBlanklineContextChar { fg = "#4d5766" }, -- IndentBlanklineContextChar xxx guifg=#4d5766
     IndentBlanklineChar { fg = "#282828" }, -- IndentBlanklineChar xxx guifg=#282828
-    LazyUrl { fg = "#5a5a5a" }, -- LazyUrl        xxx guifg=#5a5a5a
-    LazyDir { LazyUrl }, -- LazyDir        xxx links to LazyUrl
-    LazyProp { fg = "#cccccc", bg = "#1e1e1e" }, -- LazyProp       xxx guifg=#cccccc guibg=#1e1e1e
-    LazyProgressTodo { fg = "#282828", bg = "#1e1e1e" }, -- LazyProgressTodo xxx guifg=#282828 guibg=#1e1e1e
-    LazyProgressDone { fg = "#7c9ffa", bg = "#1e1e1e" }, -- LazyProgressDone xxx guifg=#7c9ffa guibg=#1e1e1e
-    LazyH1 { fg = "#080e07", gui = "bold", bg = "#7c9ffa" }, -- LazyH1         xxx cterm=bold gui=bold guifg=#080e07 guibg=#7c9ffa
-    LazyNormal { fg = "#bda893", bg = "#1e1e1e" }, -- LazyNormal     xxx guifg=#bda893 guibg=#1e1e1e
-    LazyButton { fg = "#cccccc", bg = "#141414" }, -- LazyButton     xxx guifg=#cccccc guibg=#141414
     TelescopePreviewTitle { fg = "#080e07", bg = "#ebcfb2" }, -- TelescopePreviewTitle xxx guifg=#080e07 guibg=#ebcfb2
     TelescopePreviewNormal { bg = "#141414" }, -- TelescopePreviewNormal xxx guibg=#141414
     TelescopePreviewMessage { TelescopePreviewNormal }, -- TelescopePreviewMessage xxx links to TelescopePreviewNormal
