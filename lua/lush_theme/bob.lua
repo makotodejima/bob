@@ -2,8 +2,8 @@ local lush = require "lush"
 local hsl = lush.hsl
 
 local palette = {
-  base = { bg = hsl(120, 30, 5), fg = hsl(0, 0, 75) },
-  blue = hsl(220, 80, 60),
+  base = { bg = hsl(120, 28, 4), fg = hsl(0, 0, 66) },
+  blue = hsl(220, 77, 60),
   highlight_low = "#21202e",
   highlight_med = hsl(0, 0, 10),
   highlight_high = hsl(0, 0, 20),
@@ -13,7 +13,7 @@ local palette = {
     deleted = hsl(11, 51, 23),
   },
   p = {
-    emerald = hsl(151, 72, 53),
+    emerald = hsl(150, 48, 45),
     light_green = hsl(160, 18, 42),
     green = hsl(190, 35, 25),
     dark_green = hsl(185, 20, 24),
@@ -30,9 +30,10 @@ local palette = {
     red = hsl(9, 76, 35),
     chocolate = hsl(340, 85, 16),
     chill = hsl(30, 16, 55),
-    wheat = hsl(30, 56, 77),
+    wheat = hsl(30, 58, 74),
     mute = hsl(6, 6, 32),
     ash = hsl(205, 19, 38),
+    off_white = hsl(210, 17, 66),
   },
 }
 
@@ -157,7 +158,7 @@ local theme = lush(function(injected_functions)
     -- Macro          { }, --   Same as Define
     -- PreCondit      { }, --   Preprocessor #if, #else, #endif, etc.
 
-    Type { fg = palette.p.wheat }, -- (*) int, long, char, etc.
+    -- Type { fg = palette.p.wheat }, -- (*) int, long, char, etc.
     -- StorageClass   { }, --   static, register, volatile, etc.
     -- Structure      { }, --   struct, union, enum, etc.
     -- Typedef        { }, --   A typedef
@@ -293,30 +294,30 @@ local theme = lush(function(injected_functions)
     TelescopeResultsDiffUntracked { NonText }, -- TelescopeResultsDiffUntracked xxx links to NonText
     TelescopePreviewHyphen { NonText }, -- TelescopePreviewHyphen xxx links to NonText
     GitSignsCurrentLineBlame { NonText }, -- GitSignsCurrentLineBlame xxx links to NonText
-    Directory { fg = "#928374" }, -- Directory      xxx cterm=bold gui=bold guifg=#928374
+    Directory { fg = palette.p.chill }, -- Directory      xxx cterm=bold gui=bold guifg=#928374
     TelescopePreviewDirectory { Directory }, -- TelescopePreviewDirectory xxx links to Directory
     TelescopePreviewDate { Directory }, -- TelescopePreviewDate xxx links to Directory
     OilDir { Directory }, -- OilDir         xxx links to Directory
     netrwDir { Directory }, -- netrwDir       xxx links to Directory
-    ErrorMsg { fg = "white", bg = "red" }, -- ErrorMsg       xxx ctermfg=15 ctermbg=1 guifg=White guibg=Red
+    ErrorMsg { fg = palette.p.off_white, bg = palette.p.red }, -- ErrorMsg       xxx ctermfg=15 ctermbg=1 guifg=White guibg=Red
     NvimInvalidSpacing { ErrorMsg }, -- NvimInvalidSpacing xxx links to ErrorMsg
     -- IncSearch { fg = "#141414", bg = "#7c9ffa" }, -- IncSearch      xxx guifg=#141414 guibg=#7c9ffa
     -- CurSearch { IncSearch }, -- CurSearch      xxx links to IncSearch
     -- Substitute { IncSearch }, -- Substitute     xxx links to IncSearch
     MoreMsg { fg = "#82e887" }, -- MoreMsg        xxx guifg=#82e887
     ModeMsg { gui = "bold" }, -- ModeMsg        xxx cterm=bold gui=bold
-    LineNr { fg = "#2c323c", bg = "#080e07" }, -- LineNr         xxx guifg=#2c323c guibg=#080e07
+    LineNr { fg = "#363c49" }, -- LineNr         xxx guifg=#2c323c guibg=#080e07
     LineNrAbove { LineNr }, -- LineNrAbove    xxx links to LineNr
     LineNrBelow { LineNr }, -- LineNrBelow    xxx links to LineNr
     TelescopeResultsLineNr { LineNr }, -- TelescopeResultsLineNr xxx links to LineNr
     TreesitterContextLineNumber { LineNr }, -- TreesitterContextLineNumber xxx links to LineNr
-    CursorLineNr { fg = "#4d5766", bg = "#141414" }, -- CursorLineNr   xxx cterm=bold gui=bold guifg=#4d5766 guibg=#141414
+    CursorLineNr { fg = "#57647f", bg = "#141414" }, -- CursorLineNr   xxx cterm=bold gui=bold guifg=#4d5766 guibg=#141414
     MarkSignNumHL { CursorLineNr }, -- MarkSignNumHL  xxx links to CursorLineNr
     CursorLineSign { bg = "#141414" }, -- CursorLineSign xxx guibg=#141414
     CursorLineFold { fg = "#7c9ffa", bg = "#141414" }, -- CursorLineFold xxx guifg=#7c9ffa guibg=#141414
     Question { fg = "green", gui = "bold" }, -- Question       xxx ctermfg=121 gui=bold guifg=Green
     netrwSymLink { Question }, -- netrwSymLink   xxx links to Question
-    StatusLine { bg = "#141414" }, -- StatusLine     xxx guibg=#141414
+    StatusLine { bg = palette.highlight_med }, -- StatusLine     xxx guibg=#141414
     MsgSeparator { StatusLine }, -- MsgSeparator   xxx links to StatusLine
     StatusLineNC { gui = "reverse" }, -- StatusLineNC   xxx cterm=reverse gui=reverse
     WinSeparator { fg = "#2c323c", bg = "#080e07" }, -- WinSeparator   xxx guifg=#2c323c guibg=#080e07
@@ -371,7 +372,7 @@ local theme = lush(function(injected_functions)
     netrwMarkFile { TabLineSel }, -- netrwMarkFile  xxx links to TabLineSel
     TabLineFill { gui = "reverse" }, -- TabLineFill    xxx cterm=reverse gui=reverse
     CursorColumn { bg = "grey40" }, -- CursorColumn   xxx ctermbg=242 guibg=Grey40
-    CursorLine { bg = "#171717" }, -- CursorLine     xxx guibg=#141414
+    CursorLine { bg = "#1b1b1b" }, -- CursorLine     xxx guibg=#141414
     -- ColorColumn { bg = "#282828" }, -- ColorColumn    xxx guibg=#282828
     Whitespace { fg = "#7c9ffa" }, -- Whitespace     xxx guifg=#7c9ffa
     NormalNC { fg = "#cccccc", bg = hsl(110, 30, 4) }, -- NormalNC       xxx guifg=#cccccc guibg=#080e07
@@ -429,7 +430,7 @@ local theme = lush(function(injected_functions)
     netrwQHTopic { Number }, -- netrwQHTopic   xxx links to Number
     -- Boolean { fg = "#ffffff", gui = "bold" }, -- Boolean        xxx cterm=bold gui=bold guifg=#ffffff
     sym "@boolean" { Boolean }, -- @boolean       xxx links to Boolean
-    Function { fg = "#d5bba1" }, -- Function       xxx guifg=#d5bba1
+    Function { fg = palette.p.off_white }, -- Function       xxx guifg=#d5bba1
     sym "@function" { Function }, -- @function      xxx links to Function
     sym "@method" { Function }, -- @method        xxx links to Function
     sym "@lsp.type.decorator" { Function }, -- @lsp.type.decorator xxx links to Function
@@ -441,7 +442,7 @@ local theme = lush(function(injected_functions)
     LspInfoList { Function }, -- LspInfoList    xxx links to Function
     netrwClassify { Function }, -- netrwClassify  xxx links to Function
     netrwHelpCmd { Function }, -- netrwHelpCmd   xxx links to Function
-    Identifier { fg = "#cccccc" }, -- Identifier     xxx guifg=#cccccc
+    Identifier { fg = palette.base.fg }, -- Identifier     xxx guifg=#cccccc
     sym "@parameter" { Identifier }, -- @parameter     xxx links to Identifier
     sym "@field" { Identifier }, -- @field         xxx links to Identifier
     sym "@property" { Identifier }, -- @property      xxx links to Identifier
@@ -490,7 +491,7 @@ local theme = lush(function(injected_functions)
     sym "@function.macro" { Macro }, -- @function.macro xxx links to Macro
     sym "@lsp.type.macro" { Macro }, -- @lsp.type.macro xxx links to Macro
     PreCondit { fg = "#7189a8", gui = "bold" }, -- PreCondit      xxx cterm=bold gui=bold guifg=#7189a8
-    -- Type { fg = "#ebcfb2" }, -- Type           xxx cterm=bold gui=bold guifg=#ebcfb2
+    Type { fg = palette.p.wheat }, -- Type           xxx cterm=bold gui=bold guifg=#ebcfb2
     StorageClass { Type }, -- StorageClass   xxx links to Type
     Structure { Type }, -- Structure      xxx links to Type
     Typedef { Type }, -- Typedef        xxx links to Type
@@ -536,9 +537,9 @@ local theme = lush(function(injected_functions)
     DiagnosticFloatingOk { DiagnosticOk }, -- DiagnosticFloatingOk xxx links to DiagnosticOk
     DiagnosticSignOk { DiagnosticOk }, -- DiagnosticSignOk xxx links to DiagnosticOk
     DiagnosticUnderlineError { sp = "#b1501b", gui = "underline" }, -- DiagnosticUnderlineError xxx guisp=#b1501b
-    DiagnosticUnderlineWarn { sp = "#d6b147", gui = "underline" }, -- DiagnosticUnderlineWarn xxx guisp=#d6b147
-    DiagnosticUnderlineInfo { sp = "#a1d5a1", gui = "underline" }, -- DiagnosticUnderlineInfo xxx guisp=#a1d5a1
-    DiagnosticUnderlineHint { sp = "#a1a1d5", gui = "underline" }, -- DiagnosticUnderlineHint xxx guisp=#a1a1d5
+    DiagnosticUnderlineWarn { sp = "#d6b147" }, -- DiagnosticUnderlineWarn xxx guisp=#d6b147
+    DiagnosticUnderlineInfo { sp = "#a1d5a1" }, -- DiagnosticUnderlineInfo xxx guisp=#a1d5a1
+    DiagnosticUnderlineHint { sp = "#a1a1d5" }, -- DiagnosticUnderlineHint xxx guisp=#a1a1d5
     DiagnosticUnderlineOk { sp = "lightgreen", gui = "underline" }, -- DiagnosticUnderlineOk xxx cterm=underline gui=underline guisp=LightGreen
     DiagnosticDeprecated { fg = "#665d5c", gui = "italic,strikethrough" }, -- DiagnosticDeprecated xxx cterm=italic,strikethrough gui=italic,strikethrough guifg=#665d5c
     DiagnosticUnnecessary { fg = "#665d5c", gui = "italic" }, -- DiagnosticUnnecessary xxx cterm=italic gui=italic guifg=#665d5c
@@ -612,7 +613,7 @@ local theme = lush(function(injected_functions)
     CmpItemAbbrDeprecated { CmpItemAbbrDeprecatedDefault }, -- CmpItemAbbrDeprecated xxx links to CmpItemAbbrDeprecatedDefault
     CmpItemKindDefault { fg = "#696969" }, -- CmpItemKindDefault xxx guifg=#696969
     CmpItemKind { CmpItemKindDefault }, -- CmpItemKind    xxx links to CmpItemKindDefault
-    TreesitterContext { fg = "#ffffff", bg = "#2a2f37" }, -- TreesitterContext xxx guifg=#ffffff guibg=#2a2f37
+    TreesitterContext { fg = palette.base.fg, bg = "#2a2f37" }, -- TreesitterContext xxx guifg=#ffffff guibg=#2a2f37
     Sneak { fg = "#002335", bg = "#ffd5d1" }, -- Sneak          xxx guifg=#002335 guibg=#ffd5d1
     diffAdded { fg = "#32a0b4", bg = "#28383c" }, -- diffAdded      xxx guifg=#32a0b4 guibg=#28383c
     diffRemoved { fg = "#b40000", bg = "#28383c" }, -- diffRemoved    xxx guifg=#b40000 guibg=#28383c
