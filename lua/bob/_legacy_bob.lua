@@ -1,3 +1,7 @@
+-- This is the legacy file for bob.nvim
+-- Not used in the current version in this directory
+-- It used to built with lush.nvim
+
 local lush = require("lush")
 local hsl = lush.hsl
 
