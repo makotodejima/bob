@@ -1,10 +1,12 @@
 # Bob Colorscheme
 
-A dark Neovim colorscheme with a green-tinted background and carefully balanced syntax highlighting. Originally built with lush.nvim, now converted to pure Lua for better performance and maintainability.
+A dark Neovim colorscheme with a green-tinted background and carefully balanced
+syntax highlighting. Originally built with lush.nvim, now converted to pure Lua
+for better performance and maintainability.
 
 ## Features
 
-- Dark green-tinted background (`hsl(175, 22, 2)`)
+- Dark green-tinted background
 - Comprehensive syntax highlighting for all major languages
 - Full Tree-sitter support
 - Plugin integrations (Telescope, GitSigns, LSP diagnostics, etc.)
@@ -21,4 +23,3 @@ A dark Neovim colorscheme with a green-tinted background and carefully balanced 
 ## Conversion Status
 
 Converting from lush.nvim to pure Lua implementation using `vim.api.nvim_set_hl()` for modern Neovim compatibility.
-
