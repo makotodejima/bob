@@ -1,15 +1,20 @@
 local lush = require "lush"
 local hsl = lush.hsl
 
+local experimentalbg = hsl(175, 22, 2)
 local palette = {
-  base = { bg = hsl(120, 28, 4), fg = hsl(0, 0, 66) },
+  base = {
+    -- bg = hsl(120, 28, 3),
+    bg = experimentalbg,
+    fg = hsl(0, 0, 70),
+  },
   blue = hsl(220, 77, 60),
   highlight_low = "#21202e",
   highlight_med = hsl(0, 0, 10),
   highlight_high = hsl(0, 0, 20),
   none = "NONE",
   diff = {
-    added = hsl(170, 60, 20),
+    added = hsl(175, 20, 18),
     deleted = hsl(11, 51, 23),
   },
   p = {
@@ -375,8 +380,8 @@ local theme = lush(function(injected_functions)
     CursorLine { bg = "#1b1b1b" }, -- CursorLine     xxx guibg=#141414
     -- ColorColumn { bg = "#282828" }, -- ColorColumn    xxx guibg=#282828
     Whitespace { fg = "#7c9ffa" }, -- Whitespace     xxx guifg=#7c9ffa
-    NormalNC { fg = "#cccccc", bg = hsl(110, 30, 4) }, -- NormalNC       xxx guifg=#cccccc guibg=#080e07
-    NormalFloat { bg = "#2a2f37" }, -- NormalFloat    xxx guibg=#2a2f37
+    NormalNC { fg = palette.base.fg.darken(10), bg = palette.base.bg.darken(50) },
+    NormalFloat { bg = palette.highlight_high }, -- NormalFloat    xxx guibg=#2a2f37
     NotifyBackground { NormalFloat }, -- NotifyBackground xxx links to NormalFloat
     NotifyTRACEBody { NormalFloat }, -- NotifyTRACEBody xxx links to NormalFloat
     NotifyDEBUGBody { NormalFloat }, -- NotifyDEBUGBody xxx links to NormalFloat
