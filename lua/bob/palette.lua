@@ -1,48 +1,65 @@
 -- Bob colorscheme palette
 
 return {
-  base = "#040606", -- hsl(175, 22, 2) experimentalbg converted
-  surface = "#141414", -- matches legacy overlay usage
-  overlay = "#323232", -- for overlays and highlights
+  -- Base backgrounds
+  base = "#040606",
+  surface = "#141414",
+  overlay = "#323232",
 
-  -- Text colors (from legacy)
-  text = "#bfbfbf", -- hsl(0, 0, 75)
-  muted = "#564e4d", -- hsl(6, 6, 32) - from legacy Comment
-  subtle = "#182434", -- from legacy LineNr
+  -- Text
+  text = "#bfbfbf",
+  muted = "#564e4d",
+  subtle = "#182434",
 
-  -- Accent colors (from legacy palette.p)
-  emerald = "#3caa73", -- hsl(150, 48, 45)
+  -- Greens
+  emerald = "#3caa73",
   green = "#294f56",
-  dark_green = "#2e5440", -- hsl(185, 20, 24)
+  dark_green = "#2e5440",
 
-  blue = "#4a7a99", -- hsl(202, 55, 39)
+  -- Blues
+  blue = "#4a7a99",
   smooth_blue = "#5670a8",
-  smooth_navy = "#4a6682", -- hsl(215, 27, 36)
+  smooth_navy = "#4a6682",
+  accent_blue = "#6692eb",
+  accent_purple = "#7c9ffa",
 
-  accent_blue = "#6692eb", -- hsl(220, 77, 60)
+  -- Warm tones
+  eggplant = "#6b4d5c",
+  mahogany = "#c04000",
+  auburn = "#996640",
+  red = "#9d2a15",
+  chocolate = "#661a29",
 
-  eggplant = "#6b4d5c", -- hsl(340, 16, 36)
+  -- Neutrals
+  chill = "#928374",
+  wheat = "#a89684",
+  ash = "#4e6473",
+  off_white = "#8c97ae",
 
-  mahogany = "#c04000", -- hsl(22, 100, 38)
-  auburn = "#996640", -- hsl(4, 56, 40)
-  red = "#9d2a15", -- hsl(9, 76, 35)
-  chocolate = "#661a29", -- hsl(340, 85, 16)
+  -- UI elements
+  line_nr = "#363c49",
+  cursor_line_nr = "#57647f",
+  win_separator_fg = "#2c323c",
+  win_separator_bg = "#080e07",
+  pmenu_sel = "#273953",
+  pmenu_thumb = "#464646",
 
-  chill = "#928374", -- hsl(30, 16, 55)
-  wheat = "#a89684", -- hsl(30, 58, 74)
-  ash = "#4e6473", -- hsl(205, 19, 38)
-  off_white = "#8c97ae", -- hsl(210, 17, 66)
-
+  -- Highlights
   highlight_low = "#171717",
-  highlight_med = "#191919", -- hsl(0, 0, 10)
-  highlight_high = "#333333", -- hsl(0, 0, 20)
+  highlight_med = "#191919",
+  highlight_high = "#333333",
 
+  -- Diff
   diff_added_bg = "#0d1c14",
   diff_deleted_bg = "#3a1b14",
-
-  -- diff_added = "#32A0B4",
   diff_modified = "#E6B450",
-  -- diff_deleted = "#B40000",
+
+  -- Diagnostics
+  diagnostic_error = "#b1501b",
+  diagnostic_warn = "#d6b147",
+  diagnostic_info = "#a1d5a1",
+  diagnostic_hint = "#a1a1d5",
+  diagnostic_ok = "#90ee90",
 
   none = "NONE",
 }

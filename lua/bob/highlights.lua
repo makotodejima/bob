@@ -13,7 +13,7 @@ return {
   Cursor = { reverse = true },
   CursorLine = { bg = p.highlight_low },
   CursorColumn = { bg = p.highlight_low },
-  CursorLineNr = { fg = "#57647f", bg = p.highlight_low },
+  CursorLineNr = { fg = p.cursor_line_nr, bg = p.highlight_low },
 
   -- Search
   IncSearch = { bg = p.emerald, fg = u.darken(p.emerald, 80) },
@@ -39,7 +39,7 @@ return {
   DiffText = { bg = u.lighten(p.diff_added_bg, 2) },
 
   -- Line numbers
-  LineNr = { fg = "#363c49" }, -- From legacy LineNr
+  LineNr = { fg = p.line_nr },
   LineNrAbove = { link = "LineNr" },
   LineNrBelow = { link = "LineNr" },
 
@@ -52,19 +52,19 @@ return {
   VisualNOS = { link = "Visual" },
 
   -- Popups
-  Pmenu = { bg = "#323232" }, -- From legacy Pmenu
-  PmenuSel = { bg = "#273953" }, -- From legacy Visual (PmenuSel links to Visual)
-  PmenuSbar = { bg = "#323232" }, -- From legacy PmenuSbar
-  PmenuThumb = { bg = "#464646" }, -- From legacy PmenuThumb
+  Pmenu = { bg = p.overlay },
+  PmenuSel = { bg = p.pmenu_sel },
+  PmenuSbar = { bg = p.overlay },
+  PmenuThumb = { bg = p.pmenu_thumb },
 
   -- Borders
-  FloatBorder = { bg = "#323232" }, -- From legacy FloatBorder
-  WinSeparator = { fg = "#2c323c", bg = "#080e07" }, -- From legacy WinSeparator
+  FloatBorder = { bg = p.overlay },
+  WinSeparator = { fg = p.win_separator_fg, bg = p.win_separator_bg },
 
   -- Messages
-  ErrorMsg = { fg = "#ffffff", bg = "#b1501b" }, -- From legacy ErrorMsg
+  ErrorMsg = { fg = p.text, bg = p.diagnostic_error },
   WarningMsg = { fg = p.red },
-  Question = { fg = "green", bold = true }, -- From legacy Question
+  Question = { fg = p.emerald, bold = true },
 
   -- Syntax highlighting
   Comment = { fg = p.muted, italic = true },
@@ -106,11 +106,11 @@ return {
   Debug = { link = "Special" },
 
   -- Diagnostics
-  DiagnosticError = { fg = "#b1501b" }, -- From legacy DiagnosticError
-  DiagnosticWarn = { fg = "#d6b147" }, -- From legacy DiagnosticWarn
-  DiagnosticInfo = { fg = "#a1d5a1" }, -- From legacy DiagnosticInfo
-  DiagnosticHint = { fg = "#a1a1d5" }, -- From legacy DiagnosticHint
-  DiagnosticOk = { fg = "lightgreen" }, -- From legacy DiagnosticOk
+  DiagnosticError = { fg = p.diagnostic_error },
+  DiagnosticWarn = { fg = p.diagnostic_warn },
+  DiagnosticInfo = { fg = p.diagnostic_info },
+  DiagnosticHint = { fg = p.diagnostic_hint },
+  DiagnosticOk = { fg = p.diagnostic_ok },
 
   -- Diagnostic virtual text
   DiagnosticVirtualTextError = { link = "DiagnosticError" },
@@ -120,11 +120,11 @@ return {
   DiagnosticVirtualTextOk = { link = "DiagnosticOk" },
 
   -- Diagnostic underlines
-  DiagnosticUnderlineError = { sp = "#b1501b", underline = true },
-  DiagnosticUnderlineWarn = { sp = "#d6b147" },
-  DiagnosticUnderlineInfo = { sp = "#a1d5a1" },
-  DiagnosticUnderlineHint = { sp = "#a1a1d5" },
-  DiagnosticUnderlineOk = { sp = "lightgreen", underline = true },
+  DiagnosticUnderlineError = { sp = p.diagnostic_error, underline = true },
+  DiagnosticUnderlineWarn = { sp = p.diagnostic_warn, underline = true },
+  DiagnosticUnderlineInfo = { sp = p.diagnostic_info, underline = true },
+  DiagnosticUnderlineHint = { sp = p.diagnostic_hint, underline = true },
+  DiagnosticUnderlineOk = { sp = p.diagnostic_ok, underline = true },
 
   -- Diagnostic floating
   DiagnosticFloatingError = { link = "DiagnosticError" },
@@ -168,8 +168,8 @@ return {
   GitSignsDelete = { fg = u.lighten(p.diff_deleted_bg, 40) },
 
   -- Error and Todo
-  Error = { fg = "white", bg = "red" }, -- From legacy Error
-  Todo = { fg = "#080e07", bg = "#7c9ffa" }, -- From legacy Todo
+  Error = { fg = p.text, bg = p.red },
+  Todo = { fg = p.win_separator_bg, bg = p.accent_purple },
 
   -- Special keys and non-text
   SpecialKey = { fg = p.accent_blue },
@@ -181,13 +181,13 @@ return {
 
   -- Folding
   Folded = { fg = p.muted, bg = p.base },
-  FoldColumn = { fg = "#7c9ffa", bg = p.base },
+  FoldColumn = { fg = p.accent_purple, bg = p.base },
 
   -- Signs
   SignColumn = { bg = p.base },
 
   -- Tab line
-  TabLine = { underline = true, bg = "darkgrey" },
+  TabLine = { underline = true, bg = p.overlay },
   TabLineSel = { bold = true },
   TabLineFill = { reverse = true },
 
