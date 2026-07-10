@@ -1,6 +1,7 @@
 -- Bob colorscheme palette
 
-return {
+---@class bob.Palette
+local palette = {
   -- Base backgrounds
   base = "#040606",
   surface = "#141414",
@@ -63,3 +64,5 @@ return {
 
   none = "NONE",
 }
+
+return palette
