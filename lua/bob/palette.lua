@@ -6,7 +6,7 @@ return {
   overlay = "#323232", -- for overlays and highlights
 
   -- Text colors (from legacy)
-  text = "#b3b3b3", -- hsl(0, 0, 70) - properly converted from legacy base.fg
+  text = "#bfbfbf", -- hsl(0, 0, 75)
   muted = "#564e4d", -- hsl(6, 6, 32) - from legacy Comment
   subtle = "#182434", -- from legacy LineNr
 
