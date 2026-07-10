@@ -1,4 +1,4 @@
-local lush = require "lush"
+local lush = require("lush")
 local hsl = lush.hsl
 
 local experimentalbg = hsl(175, 22, 2)
@@ -58,20 +58,20 @@ local theme = lush(function(injected_functions)
     --
     -- See :h highlight-groups
     --
-    ColorColumn { bg = palette.highlight_med }, -- Columns set with 'colorcolumn'
+    ColorColumn({ bg = palette.highlight_med }), -- Columns set with 'colorcolumn'
     -- Conceal        { }, -- Placeholder characters substituted for concealed text (see 'conceallevel')
-    Cursor { fg = "bg", bg = "fg" }, -- Character under the cursor
-    IncSearch { bg = palette.p.emerald, fg = palette.p.emerald.darken(80) }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
-    CurSearch { IncSearch }, -- Highlighting a search pattern under the cursor (see 'hlsearch')
-    Substitute { IncSearch }, -- |:substitute| replacement text highlighting
+    Cursor({ fg = "bg", bg = "fg" }), -- Character under the cursor
+    IncSearch({ bg = palette.p.emerald, fg = palette.p.emerald.darken(80) }), -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+    CurSearch({ IncSearch }), -- Highlighting a search pattern under the cursor (see 'hlsearch')
+    Substitute({ IncSearch }), -- |:substitute| replacement text highlighting
     -- lCursor        { }, -- Character under the cursor when |language-mapping| is used (see 'guicursor')
     -- CursorIM       { }, -- Like Cursor, but used when in IME mode |CursorIM|
     -- CursorColumn   { }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
     -- CursorLine     { }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
     -- Directory      { }, -- Directory names (and other special names in listings)
-    DiffAdd { bg = palette.diff.added }, -- Diff mode: Added line |diff.txt|
+    DiffAdd({ bg = palette.diff.added }), -- Diff mode: Added line |diff.txt|
     -- DiffChange     { }, -- Diff mode: Changed line |diff.txt|
-    DiffDelete { bg = palette.diff.deleted }, -- Diff mode: Deleted line |diff.txt|
+    DiffDelete({ bg = palette.diff.deleted }), -- Diff mode: Deleted line |diff.txt|
     -- DiffText       { }, -- Diff mode: Changed text within a changed line |diff.txt|
     -- EndOfBuffer    { }, -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
     -- TermCursor     { }, -- Cursor in a focused terminal
@@ -93,7 +93,7 @@ local theme = lush(function(injected_functions)
     -- MsgSeparator   { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
     -- MoreMsg        { }, -- |more-prompt|
     -- NonText        { }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-    Normal { bg = palette.base.bg, fg = palette.base.fg }, -- Normal text
+    Normal({ bg = palette.base.bg, fg = palette.base.fg }), -- Normal text
     -- NormalFloat    { }, -- Normal text in floating windows.
     -- FloatBorder    { }, -- Border of floating windows.
     -- FloatTitle     { }, -- Title of floating windows.
@@ -107,7 +107,7 @@ local theme = lush(function(injected_functions)
     -- PmenuSbar      { }, -- Popup menu: Scrollbar.
     -- PmenuThumb     { }, -- Popup menu: Thumb of the scrollbar.
     -- Question       { }, -- |hit-enter| prompt and yes/no questions
-    -- QuickFixLine   { }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
+    QuickFixLine({ fg = palette.p.emerald }), -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
     -- Search         { }, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
     -- SpecialKey     { }, -- Unprintable characters: text displayed differently from what it really is. But not 'listchars' whitespace. |hl-Whitespace|
     -- SpellBad       { }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
@@ -137,13 +137,13 @@ local theme = lush(function(injected_functions)
     --
     -- Uncomment and edit if you want more specific syntax highlighting.
 
-    Comment { fg = palette.p.mute, gui = "italic" }, -- Any comment
+    Comment({ fg = palette.p.mute, gui = "italic" }), -- Any comment
 
-    Constant { fg = palette.base.fg }, -- (*) Any constant
+    Constant({ fg = palette.base.fg }), -- (*) Any constant
     -- String         { }, --   A string constant: "this is a string"
     -- Character      { }, --   A character constant: 'c', '\n'
-    Number { fg = palette.base.fg }, --   A number constant: 234, 0xff
-    Boolean { fg = palette.base.fg, gui = "bold" }, --   A boolean constant: TRUE, false
+    Number({ fg = palette.base.fg }), --   A number constant: 234, 0xff
+    Boolean({ fg = palette.base.fg, gui = "bold" }), --   A boolean constant: TRUE, false
     -- Float          { }, --   A floating point constant: 2.3e10
 
     -- Identifier     { }, -- (*) Any variable name
@@ -154,7 +154,7 @@ local theme = lush(function(injected_functions)
     -- Repeat         { }, --   for, do, while, etc.
     -- Label          { }, --   case, default, etc.
     -- Operator       { }, --   "sizeof", "+", "*", etc.
-    Keyword { fg = "#3a6265" }, --   any other keyword
+    Keyword({ fg = "#3a6265" }), --   any other keyword
     -- Exception      { }, --   try, catch, throw
 
     -- PreProc        { }, -- (*) Generic Preprocessor
@@ -290,136 +290,136 @@ local theme = lush(function(injected_functions)
     --
     --
 
-    SpecialKey { fg = "#7c9ffa" }, -- SpecialKey     xxx guifg=#7c9ffa
-    netrwSuffixes { SpecialKey }, -- netrwSuffixes  xxx links to SpecialKey
-    TermCursor { gui = "reverse" }, -- TermCursor     xxx cterm=reverse gui=reverse
-    NonText { fg = "#7c9ffa" }, -- NonText        xxx guifg=#7c9ffa
-    EndOfBuffer { NonText }, -- EndOfBuffer    xxx links to NonText
-    LspInlayHint { NonText }, -- LspInlayHint   xxx links to NonText
-    TelescopeResultsDiffUntracked { NonText }, -- TelescopeResultsDiffUntracked xxx links to NonText
-    TelescopePreviewHyphen { NonText }, -- TelescopePreviewHyphen xxx links to NonText
-    GitSignsCurrentLineBlame { NonText }, -- GitSignsCurrentLineBlame xxx links to NonText
-    Directory { fg = palette.p.chill }, -- Directory      xxx cterm=bold gui=bold guifg=#928374
-    TelescopePreviewDirectory { Directory }, -- TelescopePreviewDirectory xxx links to Directory
-    TelescopePreviewDate { Directory }, -- TelescopePreviewDate xxx links to Directory
-    OilDir { Directory }, -- OilDir         xxx links to Directory
-    netrwDir { Directory }, -- netrwDir       xxx links to Directory
-    ErrorMsg { fg = palette.p.off_white, bg = palette.p.red }, -- ErrorMsg       xxx ctermfg=15 ctermbg=1 guifg=White guibg=Red
-    NvimInvalidSpacing { ErrorMsg }, -- NvimInvalidSpacing xxx links to ErrorMsg
+    SpecialKey({ fg = "#7c9ffa" }), -- SpecialKey     xxx guifg=#7c9ffa
+    netrwSuffixes({ SpecialKey }), -- netrwSuffixes  xxx links to SpecialKey
+    TermCursor({ gui = "reverse" }), -- TermCursor     xxx cterm=reverse gui=reverse
+    NonText({ fg = "#7c9ffa" }), -- NonText        xxx guifg=#7c9ffa
+    EndOfBuffer({ NonText }), -- EndOfBuffer    xxx links to NonText
+    LspInlayHint({ NonText }), -- LspInlayHint   xxx links to NonText
+    TelescopeResultsDiffUntracked({ NonText }), -- TelescopeResultsDiffUntracked xxx links to NonText
+    TelescopePreviewHyphen({ NonText }), -- TelescopePreviewHyphen xxx links to NonText
+    GitSignsCurrentLineBlame({ NonText }), -- GitSignsCurrentLineBlame xxx links to NonText
+    Directory({ fg = palette.p.chill }), -- Directory      xxx cterm=bold gui=bold guifg=#928374
+    TelescopePreviewDirectory({ Directory }), -- TelescopePreviewDirectory xxx links to Directory
+    TelescopePreviewDate({ Directory }), -- TelescopePreviewDate xxx links to Directory
+    OilDir({ Directory }), -- OilDir         xxx links to Directory
+    netrwDir({ Directory }), -- netrwDir       xxx links to Directory
+    ErrorMsg({ fg = palette.p.off_white, bg = palette.p.red }), -- ErrorMsg       xxx ctermfg=15 ctermbg=1 guifg=White guibg=Red
+    NvimInvalidSpacing({ ErrorMsg }), -- NvimInvalidSpacing xxx links to ErrorMsg
     -- IncSearch { fg = "#141414", bg = "#7c9ffa" }, -- IncSearch      xxx guifg=#141414 guibg=#7c9ffa
     -- CurSearch { IncSearch }, -- CurSearch      xxx links to IncSearch
     -- Substitute { IncSearch }, -- Substitute     xxx links to IncSearch
-    MoreMsg { fg = "#82e887" }, -- MoreMsg        xxx guifg=#82e887
-    ModeMsg { gui = "bold" }, -- ModeMsg        xxx cterm=bold gui=bold
-    LineNr { fg = "#363c49" }, -- LineNr         xxx guifg=#2c323c guibg=#080e07
-    LineNrAbove { LineNr }, -- LineNrAbove    xxx links to LineNr
-    LineNrBelow { LineNr }, -- LineNrBelow    xxx links to LineNr
-    TelescopeResultsLineNr { LineNr }, -- TelescopeResultsLineNr xxx links to LineNr
-    TreesitterContextLineNumber { LineNr }, -- TreesitterContextLineNumber xxx links to LineNr
-    CursorLineNr { fg = "#57647f", bg = "#141414" }, -- CursorLineNr   xxx cterm=bold gui=bold guifg=#4d5766 guibg=#141414
-    MarkSignNumHL { CursorLineNr }, -- MarkSignNumHL  xxx links to CursorLineNr
-    CursorLineSign { bg = "#141414" }, -- CursorLineSign xxx guibg=#141414
-    CursorLineFold { fg = "#7c9ffa", bg = "#141414" }, -- CursorLineFold xxx guifg=#7c9ffa guibg=#141414
-    Question { fg = "green", gui = "bold" }, -- Question       xxx ctermfg=121 gui=bold guifg=Green
-    netrwSymLink { Question }, -- netrwSymLink   xxx links to Question
-    StatusLine { bg = palette.highlight_med }, -- StatusLine     xxx guibg=#141414
-    MsgSeparator { StatusLine }, -- MsgSeparator   xxx links to StatusLine
-    StatusLineNC { gui = "reverse" }, -- StatusLineNC   xxx cterm=reverse gui=reverse
-    WinSeparator { fg = "#2c323c", bg = "#080e07" }, -- WinSeparator   xxx guifg=#2c323c guibg=#080e07
-    VertSplit { fg = "#2c323c", bg = "#080e07" }, -- VertSplit      xxx guifg=#2c323c guibg=#080e07
-    Title { fg = "#d5bba1", gui = "bold" }, -- Title          xxx cterm=bold gui=bold guifg=#d5bba1
-    sym "@text.title" { Title }, -- @text.title    xxx links to Title
-    LspInfoTitle { Title }, -- LspInfoTitle   xxx links to Title
-    Visual { bg = "#273953" }, -- Visual         xxx guibg=#273953
-    Search { Visual }, -- Search         xxx links to Visual
-    PmenuSel { Visual }, -- PmenuSel       xxx links to Visual
-    SnippetTabstop { Visual }, -- SnippetTabstop xxx links to Visual
-    TelescopePreviewLine { Visual }, -- TelescopePreviewLine xxx links to Visual
-    TelescopeSelection { Visual }, -- TelescopeSelection xxx links to Visual
-    TSPlaygroundFocus { Visual }, -- TSPlaygroundFocus xxx links to Visual
-    WarningMsg { fg = "red" }, -- WarningMsg     xxx ctermfg=224 guifg=Red
-    netrwCoreDump { WarningMsg }, -- netrwCoreDump  xxx links to WarningMsg
-    WildMenu { fg = "black", bg = "yellow" }, -- WildMenu       xxx ctermfg=0 ctermbg=11 guifg=Black guibg=Yellow
-    Folded { fg = "#2c323c", bg = "#080e07" }, -- Folded         xxx guifg=#2c323c guibg=#080e07
-    netrwData { Folded }, -- netrwData      xxx links to Folded
-    netrwGray { Folded }, -- netrwGray      xxx links to Folded
-    FoldColumn { fg = "#7c9ffa", bg = "#080e07" }, -- FoldColumn     xxx guifg=#7c9ffa guibg=#080e07
+    MoreMsg({ fg = "#82e887" }), -- MoreMsg        xxx guifg=#82e887
+    ModeMsg({ gui = "bold" }), -- ModeMsg        xxx cterm=bold gui=bold
+    LineNr({ fg = "#363c49" }), -- LineNr         xxx guifg=#2c323c guibg=#080e07
+    LineNrAbove({ LineNr }), -- LineNrAbove    xxx links to LineNr
+    LineNrBelow({ LineNr }), -- LineNrBelow    xxx links to LineNr
+    TelescopeResultsLineNr({ LineNr }), -- TelescopeResultsLineNr xxx links to LineNr
+    TreesitterContextLineNumber({ LineNr }), -- TreesitterContextLineNumber xxx links to LineNr
+    CursorLineNr({ fg = "#57647f", bg = "#141414" }), -- CursorLineNr   xxx cterm=bold gui=bold guifg=#4d5766 guibg=#141414
+    MarkSignNumHL({ CursorLineNr }), -- MarkSignNumHL  xxx links to CursorLineNr
+    CursorLineSign({ bg = "#141414" }), -- CursorLineSign xxx guibg=#141414
+    CursorLineFold({ fg = "#7c9ffa", bg = "#141414" }), -- CursorLineFold xxx guifg=#7c9ffa guibg=#141414
+    Question({ fg = "green", gui = "bold" }), -- Question       xxx ctermfg=121 gui=bold guifg=Green
+    netrwSymLink({ Question }), -- netrwSymLink   xxx links to Question
+    StatusLine({ bg = palette.highlight_med }), -- StatusLine     xxx guibg=#141414
+    MsgSeparator({ StatusLine }), -- MsgSeparator   xxx links to StatusLine
+    StatusLineNC({ gui = "reverse" }), -- StatusLineNC   xxx cterm=reverse gui=reverse
+    WinSeparator({ fg = "#2c323c", bg = "#080e07" }), -- WinSeparator   xxx guifg=#2c323c guibg=#080e07
+    VertSplit({ fg = "#2c323c", bg = "#080e07" }), -- VertSplit      xxx guifg=#2c323c guibg=#080e07
+    Title({ fg = "#d5bba1", gui = "bold" }), -- Title          xxx cterm=bold gui=bold guifg=#d5bba1
+    sym("@text.title")({ Title }), -- @text.title    xxx links to Title
+    LspInfoTitle({ Title }), -- LspInfoTitle   xxx links to Title
+    Visual({ bg = "#273953" }), -- Visual         xxx guibg=#273953
+    Search({ Visual }), -- Search         xxx links to Visual
+    PmenuSel({ Visual }), -- PmenuSel       xxx links to Visual
+    SnippetTabstop({ Visual }), -- SnippetTabstop xxx links to Visual
+    TelescopePreviewLine({ Visual }), -- TelescopePreviewLine xxx links to Visual
+    TelescopeSelection({ Visual }), -- TelescopeSelection xxx links to Visual
+    TSPlaygroundFocus({ Visual }), -- TSPlaygroundFocus xxx links to Visual
+    WarningMsg({ fg = "red" }), -- WarningMsg     xxx ctermfg=224 guifg=Red
+    netrwCoreDump({ WarningMsg }), -- netrwCoreDump  xxx links to WarningMsg
+    WildMenu({ fg = "black", bg = "yellow" }), -- WildMenu       xxx ctermfg=0 ctermbg=11 guifg=Black guibg=Yellow
+    Folded({ fg = "#2c323c", bg = "#080e07" }), -- Folded         xxx guifg=#2c323c guibg=#080e07
+    netrwData({ Folded }), -- netrwData      xxx links to Folded
+    netrwGray({ Folded }), -- netrwGray      xxx links to Folded
+    FoldColumn({ fg = "#7c9ffa", bg = "#080e07" }), -- FoldColumn     xxx guifg=#7c9ffa guibg=#080e07
     -- DiffAdd { fg = "#cccccc", bg = "#204437" }, -- DiffAdd        xxx guifg=#cccccc guibg=#204437
     -- GitSignsAddInline { DiffAdd }, -- GitSignsAddInline xxx links to DiffAdd
     -- TelescopeResultsDiffAdd { DiffAdd }, -- TelescopeResultsDiffAdd xxx links to DiffAdd
     -- GitSignsAddLn { DiffAdd }, -- GitSignsAddLn  xxx links to DiffAdd
     -- GitSignsAddPreview { DiffAdd }, -- GitSignsAddPreview xxx links to DiffAdd
-    DiffChange { bg = "#1f2325" }, -- DiffChange     xxx guibg=#1f2325
-    GitSignsChangeInline { DiffChange }, -- GitSignsChangeInline xxx links to DiffChange
-    TelescopeResultsDiffChange { DiffChange }, -- TelescopeResultsDiffChange xxx links to DiffChange
-    netrwLib { DiffChange }, -- netrwLib       xxx links to DiffChange
-    netrwMakefile { DiffChange }, -- netrwMakefile  xxx links to DiffChange
-    GitSignsChangeLn { DiffChange }, -- GitSignsChangeLn xxx links to DiffChange
+    DiffChange({ bg = "#1f2325" }), -- DiffChange     xxx guibg=#1f2325
+    GitSignsChangeInline({ DiffChange }), -- GitSignsChangeInline xxx links to DiffChange
+    TelescopeResultsDiffChange({ DiffChange }), -- TelescopeResultsDiffChange xxx links to DiffChange
+    netrwLib({ DiffChange }), -- netrwLib       xxx links to DiffChange
+    netrwMakefile({ DiffChange }), -- netrwMakefile  xxx links to DiffChange
+    GitSignsChangeLn({ DiffChange }), -- GitSignsChangeLn xxx links to DiffChange
     -- DiffDelete { bg = "#59281d" }, -- DiffDelete     xxx guibg=#59281d
     -- GitSignsDeleteInline { DiffDelete }, -- GitSignsDeleteInline xxx links to DiffDelete
     -- TelescopeResultsDiffDelete { DiffDelete }, -- TelescopeResultsDiffDelete xxx links to DiffDelete
     -- GitSignsDeletePreview { DiffDelete }, -- GitSignsDeletePreview xxx links to DiffDelete
     -- GitSignsDeleteVirtLn { DiffDelete }, -- GitSignsDeleteVirtLn xxx links to DiffDelete
-    DiffText { fg = "#cccccc", bg = "#204437" }, -- DiffText       xxx guifg=#cccccc guibg=#204437
-    SignColumn { bg = "#080e07" }, -- SignColumn     xxx guibg=#080e07
-    Conceal { fg = "lightgrey", bg = "darkgrey" }, -- Conceal        xxx ctermfg=7 ctermbg=242 guifg=LightGrey guibg=DarkGrey
-    SpellBad { sp = "red", gui = "undercurl" }, -- SpellBad       xxx ctermbg=9 gui=undercurl guisp=Red
-    SpellCap { sp = "blue", gui = "undercurl" }, -- SpellCap       xxx ctermbg=12 gui=undercurl guisp=Blue
-    SpellRare { sp = "magenta", gui = "undercurl" }, -- SpellRare      xxx ctermbg=13 gui=undercurl guisp=Magenta
-    SpellLocal { sp = "cyan", gui = "undercurl" }, -- SpellLocal     xxx ctermbg=14 gui=undercurl guisp=Cyan
-    Pmenu { bg = "#323232" }, -- Pmenu          xxx guibg=#323232
-    PmenuKind { Pmenu }, -- PmenuKind      xxx links to Pmenu
-    PmenuExtra { Pmenu }, -- PmenuExtra     xxx links to Pmenu
-    PmenuSbar { bg = "#323232" }, -- PmenuSbar      xxx guibg=#323232
-    PmenuThumb { bg = "#464646" }, -- PmenuThumb     xxx guibg=#464646
-    TabLine { gui = "underline", bg = "darkgrey" }, -- TabLine        xxx cterm=underline ctermfg=15 ctermbg=242 gui=underline guibg=DarkGrey
-    TabLineSel { gui = "bold" }, -- TabLineSel     xxx cterm=bold gui=bold
-    netrwMarkFile { TabLineSel }, -- netrwMarkFile  xxx links to TabLineSel
-    TabLineFill { gui = "reverse" }, -- TabLineFill    xxx cterm=reverse gui=reverse
-    CursorColumn { bg = "grey40" }, -- CursorColumn   xxx ctermbg=242 guibg=Grey40
-    CursorLine { bg = "#1b1b1b" }, -- CursorLine     xxx guibg=#141414
+    DiffText({ fg = "#cccccc", bg = "#204437" }), -- DiffText       xxx guifg=#cccccc guibg=#204437
+    SignColumn({ bg = "#080e07" }), -- SignColumn     xxx guibg=#080e07
+    Conceal({ fg = "lightgrey", bg = "darkgrey" }), -- Conceal        xxx ctermfg=7 ctermbg=242 guifg=LightGrey guibg=DarkGrey
+    SpellBad({ sp = "red", gui = "undercurl" }), -- SpellBad       xxx ctermbg=9 gui=undercurl guisp=Red
+    SpellCap({ sp = "blue", gui = "undercurl" }), -- SpellCap       xxx ctermbg=12 gui=undercurl guisp=Blue
+    SpellRare({ sp = "magenta", gui = "undercurl" }), -- SpellRare      xxx ctermbg=13 gui=undercurl guisp=Magenta
+    SpellLocal({ sp = "cyan", gui = "undercurl" }), -- SpellLocal     xxx ctermbg=14 gui=undercurl guisp=Cyan
+    Pmenu({ bg = "#323232" }), -- Pmenu          xxx guibg=#323232
+    PmenuKind({ Pmenu }), -- PmenuKind      xxx links to Pmenu
+    PmenuExtra({ Pmenu }), -- PmenuExtra     xxx links to Pmenu
+    PmenuSbar({ bg = "#323232" }), -- PmenuSbar      xxx guibg=#323232
+    PmenuThumb({ bg = "#464646" }), -- PmenuThumb     xxx guibg=#464646
+    TabLine({ gui = "underline", bg = "darkgrey" }), -- TabLine        xxx cterm=underline ctermfg=15 ctermbg=242 gui=underline guibg=DarkGrey
+    TabLineSel({ gui = "bold" }), -- TabLineSel     xxx cterm=bold gui=bold
+    netrwMarkFile({ TabLineSel }), -- netrwMarkFile  xxx links to TabLineSel
+    TabLineFill({ gui = "reverse" }), -- TabLineFill    xxx cterm=reverse gui=reverse
+    CursorColumn({ bg = "grey40" }), -- CursorColumn   xxx ctermbg=242 guibg=Grey40
+    CursorLine({ bg = "#1b1b1b" }), -- CursorLine     xxx guibg=#141414
     -- ColorColumn { bg = "#282828" }, -- ColorColumn    xxx guibg=#282828
-    Whitespace { fg = "#7c9ffa" }, -- Whitespace     xxx guifg=#7c9ffa
-    NormalNC { fg = palette.base.fg.darken(10), bg = palette.base.bg.darken(50) },
-    NormalFloat { bg = palette.highlight_high }, -- NormalFloat    xxx guibg=#2a2f37
-    NotifyBackground { NormalFloat }, -- NotifyBackground xxx links to NormalFloat
-    NotifyTRACEBody { NormalFloat }, -- NotifyTRACEBody xxx links to NormalFloat
-    NotifyDEBUGBody { NormalFloat }, -- NotifyDEBUGBody xxx links to NormalFloat
-    NotifyINFOBody { NormalFloat }, -- NotifyINFOBody xxx links to NormalFloat
-    NotifyWARNBody { NormalFloat }, -- NotifyWARNBody xxx links to NormalFloat
-    NotifyERRORBody { NormalFloat }, -- NotifyERRORBody xxx links to NormalFloat
-    FloatBorder { bg = "#323232" }, -- FloatBorder    xxx guibg=#323232
-    TreesitterContextSeparator { FloatBorder }, -- TreesitterContextSeparator xxx links to FloatBorder
-    WinBar { bg = "#080e07" }, -- WinBar         xxx guibg=#080e07
-    WinBarNC { bg = "#080e07" }, -- WinBarNC       xxx guibg=#080e07
+    Whitespace({ fg = "#7c9ffa" }), -- Whitespace     xxx guifg=#7c9ffa
+    NormalNC({ fg = palette.base.fg.darken(10), bg = palette.base.bg.darken(50) }),
+    NormalFloat({ bg = palette.highlight_high }), -- NormalFloat    xxx guibg=#2a2f37
+    NotifyBackground({ NormalFloat }), -- NotifyBackground xxx links to NormalFloat
+    NotifyTRACEBody({ NormalFloat }), -- NotifyTRACEBody xxx links to NormalFloat
+    NotifyDEBUGBody({ NormalFloat }), -- NotifyDEBUGBody xxx links to NormalFloat
+    NotifyINFOBody({ NormalFloat }), -- NotifyINFOBody xxx links to NormalFloat
+    NotifyWARNBody({ NormalFloat }), -- NotifyWARNBody xxx links to NormalFloat
+    NotifyERRORBody({ NormalFloat }), -- NotifyERRORBody xxx links to NormalFloat
+    FloatBorder({ bg = "#323232" }), -- FloatBorder    xxx guibg=#323232
+    TreesitterContextSeparator({ FloatBorder }), -- TreesitterContextSeparator xxx links to FloatBorder
+    WinBar({ bg = "#080e07" }), -- WinBar         xxx guibg=#080e07
+    WinBarNC({ bg = "#080e07" }), -- WinBarNC       xxx guibg=#080e07
     -- Cursor { fg = "bg", bg = "fg" }, -- Cursor         xxx guifg=bg guibg=fg
-    FloatTitle { fg = "#080e07", gui = "bold", bg = "#ebcfb2" }, -- FloatTitle     xxx cterm=bold gui=bold guifg=#080e07 guibg=#ebcfb2
-    FloatFooter { fg = "#080e07", gui = "bold", bg = "#ebcfb2" }, -- FloatFooter    xxx cterm=bold gui=bold guifg=#080e07 guibg=#ebcfb2
-    lCursor { fg = "bg", bg = "fg" }, -- lCursor        xxx guifg=bg guibg=fg
+    FloatTitle({ fg = "#080e07", gui = "bold", bg = "#ebcfb2" }), -- FloatTitle     xxx cterm=bold gui=bold guifg=#080e07 guibg=#ebcfb2
+    FloatFooter({ fg = "#080e07", gui = "bold", bg = "#ebcfb2" }), -- FloatFooter    xxx cterm=bold gui=bold guifg=#080e07 guibg=#ebcfb2
+    lCursor({ fg = "bg", bg = "fg" }), -- lCursor        xxx guifg=bg guibg=fg
     -- Normal { fg = "#cccccc", bg = "#080e07" }, -- Normal         xxx guifg=#cccccc guibg=#080e07
-    NvimSpacing { Normal }, -- NvimSpacing    xxx links to Normal
-    TelescopeNormal { Normal }, -- TelescopeNormal xxx links to Normal
-    FloatShadow { blend = 80, bg = "black" }, -- FloatShadow    xxx guibg=Black blend=80
-    FloatShadowThrough { blend = 100, bg = "black" }, -- FloatShadowThrough xxx guibg=Black blend=100
-    RedrawDebugNormal { gui = "reverse" }, -- RedrawDebugNormal xxx cterm=reverse gui=reverse
-    RedrawDebugClear { bg = "yellow" }, -- RedrawDebugClear xxx ctermbg=11 guibg=Yellow
-    RedrawDebugComposed { bg = "green" }, -- RedrawDebugComposed xxx ctermbg=10 guibg=Green
-    RedrawDebugRecompose { bg = "red" }, -- RedrawDebugRecompose xxx ctermbg=9 guibg=Red
-    Error { fg = "white", bg = "red" }, -- Error          xxx ctermfg=15 ctermbg=9 guifg=White guibg=Red
-    NvimInvalid { Error }, -- NvimInvalid    xxx links to Error
-    TSQueryLinterError { Error }, -- TSQueryLinterError xxx links to Error
-    Todo { fg = "#080e07", bg = "#7c9ffa" }, -- Todo           xxx guifg=#080e07 guibg=#7c9ffa
-    sym "@comment.todo" { Todo }, -- @text.todo     xxx links to Todo
-    String { fg = "#a89684" }, -- String         xxx guifg=#a89684
-    sym "@string" { String }, -- @string        xxx links to String
-    NvimString { String }, -- NvimString     xxx links to String
+    NvimSpacing({ Normal }), -- NvimSpacing    xxx links to Normal
+    TelescopeNormal({ Normal }), -- TelescopeNormal xxx links to Normal
+    FloatShadow({ blend = 80, bg = "black" }), -- FloatShadow    xxx guibg=Black blend=80
+    FloatShadowThrough({ blend = 100, bg = "black" }), -- FloatShadowThrough xxx guibg=Black blend=100
+    RedrawDebugNormal({ gui = "reverse" }), -- RedrawDebugNormal xxx cterm=reverse gui=reverse
+    RedrawDebugClear({ bg = "yellow" }), -- RedrawDebugClear xxx ctermbg=11 guibg=Yellow
+    RedrawDebugComposed({ bg = "green" }), -- RedrawDebugComposed xxx ctermbg=10 guibg=Green
+    RedrawDebugRecompose({ bg = "red" }), -- RedrawDebugRecompose xxx ctermbg=9 guibg=Red
+    Error({ fg = "white", bg = "red" }), -- Error          xxx ctermfg=15 ctermbg=9 guifg=White guibg=Red
+    NvimInvalid({ Error }), -- NvimInvalid    xxx links to Error
+    TSQueryLinterError({ Error }), -- TSQueryLinterError xxx links to Error
+    Todo({ fg = "#080e07", bg = "#7c9ffa" }), -- Todo           xxx guifg=#080e07 guibg=#7c9ffa
+    sym("@comment.todo")({ Todo }), -- @text.todo     xxx links to Todo
+    String({ fg = "#a89684" }), -- String         xxx guifg=#a89684
+    sym("@string")({ String }), -- @string        xxx links to String
+    NvimString({ String }), -- NvimString     xxx links to String
     -- TelescopePreviewSize { String }, -- TelescopePreviewSize xxx links to String
     -- TelescopePreviewExecute { String }, -- TelescopePreviewExecute xxx links to String
-    TSPlaygroundLang { String }, -- TSPlaygroundLang xxx links to String
+    TSPlaygroundLang({ String }), -- TSPlaygroundLang xxx links to String
     -- Constant { fg = "#ffffff", gui = "bold" }, -- Constant       xxx cterm=bold gui=bold guifg=#ffffff
-    Character { Constant }, -- Character      xxx links to Constant
-    sym "@constant" { Constant }, -- @constant      xxx links to Constant
-    sym "@lsp.type.enumMember" { Constant }, -- @lsp.type.enumMember xxx links to Constant
+    Character({ Constant }), -- Character      xxx links to Constant
+    sym("@constant")({ Constant }), -- @constant      xxx links to Constant
+    sym("@lsp.type.enumMember")({ Constant }), -- @lsp.type.enumMember xxx links to Constant
     -- TelescopePreviewRead { Constant }, -- TelescopePreviewRead xxx links to Constant
     -- TelescopePreviewBlock { Constant }, -- TelescopePreviewBlock xxx links to Constant
     -- TelescopePreviewCharDev { Constant }, -- TelescopePreviewCharDev xxx links to Constant
@@ -428,202 +428,202 @@ local theme = lush(function(injected_functions)
     -- TelescopePreviewGroup { Constant }, -- TelescopePreviewGroup xxx links to Constant
     -- TelescopePreviewUser { Constant }, -- TelescopePreviewUser xxx links to Constant
     -- Number { fg = "#ffffff" }, -- Number         xxx guifg=#ffffff
-    Float { Number }, -- Float          xxx links to Number
-    sym "@number" { Number }, -- @number        xxx links to Number
-    NvimNumber { Number }, -- NvimNumber     xxx links to Number
-    TelescopeResultsNumber { Number }, -- TelescopeResultsNumber xxx links to Number
-    netrwQHTopic { Number }, -- netrwQHTopic   xxx links to Number
+    Float({ Number }), -- Float          xxx links to Number
+    sym("@number")({ Number }), -- @number        xxx links to Number
+    NvimNumber({ Number }), -- NvimNumber     xxx links to Number
+    TelescopeResultsNumber({ Number }), -- TelescopeResultsNumber xxx links to Number
+    netrwQHTopic({ Number }), -- netrwQHTopic   xxx links to Number
     -- Boolean { fg = "#ffffff", gui = "bold" }, -- Boolean        xxx cterm=bold gui=bold guifg=#ffffff
-    sym "@boolean" { Boolean }, -- @boolean       xxx links to Boolean
-    Function { fg = palette.p.off_white }, -- Function       xxx guifg=#d5bba1
-    sym "@function" { Function }, -- @function      xxx links to Function
-    sym "@method" { Function }, -- @method        xxx links to Function
-    sym "@lsp.type.decorator" { Function }, -- @lsp.type.decorator xxx links to Function
-    sym "@lsp.type.function" { Function }, -- @lsp.type.function xxx links to Function
-    sym "@lsp.type.method" { Function }, -- @lsp.type.method xxx links to Function
+    sym("@boolean")({ Boolean }), -- @boolean       xxx links to Boolean
+    Function({ fg = palette.p.off_white }), -- Function       xxx guifg=#d5bba1
+    sym("@function")({ Function }), -- @function      xxx links to Function
+    sym("@method")({ Function }), -- @method        xxx links to Function
+    sym("@lsp.type.decorator")({ Function }), -- @lsp.type.decorator xxx links to Function
+    sym("@lsp.type.function")({ Function }), -- @lsp.type.function xxx links to Function
+    sym("@lsp.type.method")({ Function }), -- @lsp.type.method xxx links to Function
     -- TelescopeResultsFunction { Function }, -- TelescopeResultsFunction xxx links to Function
     -- TelescopeResultsField { Function }, -- TelescopeResultsField xxx links to Function
     -- TelescopeResultsClass { Function }, -- TelescopeResultsClass xxx links to Function
-    LspInfoList { Function }, -- LspInfoList    xxx links to Function
-    netrwClassify { Function }, -- netrwClassify  xxx links to Function
-    netrwHelpCmd { Function }, -- netrwHelpCmd   xxx links to Function
-    Identifier { fg = palette.base.fg }, -- Identifier     xxx guifg=#cccccc
-    sym "@parameter" { Identifier }, -- @parameter     xxx links to Identifier
-    sym "@field" { Identifier }, -- @field         xxx links to Identifier
-    sym "@property" { Identifier }, -- @property      xxx links to Identifier
-    sym "@variable" { Identifier }, -- @variable      xxx links to Identifier
-    sym "@namespace" { Identifier }, -- @namespace     xxx links to Identifier
-    sym "@lsp.type.parameter" { Identifier }, -- @lsp.type.parameter xxx links to Identifier
-    sym "@lsp.type.property" { Identifier }, -- @lsp.type.property xxx links to Identifier
-    sym "@lsp.type.variable" { Identifier }, -- @lsp.type.variable xxx links to Identifier
-    NvimIdentifier { Identifier }, -- NvimIdentifier xxx links to Identifier
-    TelescopePromptPrefix { Identifier }, -- TelescopePromptPrefix xxx links to Identifier
-    TelescopeMultiIcon { Identifier }, -- TelescopeMultiIcon xxx links to Identifier
-    TelescopeResultsIdentifier { Identifier }, -- TelescopeResultsIdentifier xxx links to Identifier
-    MarkSignHL { Identifier }, -- MarkSignHL     xxx links to Identifier
-    netrwVersion { Identifier }, -- netrwVersion   xxx links to Identifier
-    Conditional { fg = "#7189a8" }, -- Conditional    xxx guifg=#7189a8
-    sym "@conditional" { Conditional }, -- @conditional   xxx links to Conditional
-    Statement { fg = "#7189a8" }, -- Statement      xxx guifg=#7189a8
-    Repeat { Statement }, -- Repeat         xxx links to Statement
-    Label { Statement }, -- Label          xxx links to Statement
-    TelescopePreviewSocket { Statement }, -- TelescopePreviewSocket xxx links to Statement
-    TelescopePreviewWrite { Statement }, -- TelescopePreviewWrite xxx links to Statement
-    netrwHidePat { Statement }, -- netrwHidePat   xxx links to Statement
-    netrwList { Statement }, -- netrwList      xxx links to Statement
-    Operator { fg = "#7189a8" }, -- Operator       xxx guifg=#7189a8
-    sym "@operator" { Operator }, -- @operator      xxx links to Operator
-    NvimAssignment { Operator }, -- NvimAssignment xxx links to Operator
-    NvimOperator { Operator }, -- NvimOperator   xxx links to Operator
-    TelescopeResultsOperator { Operator }, -- TelescopeResultsOperator xxx links to Operator
+    LspInfoList({ Function }), -- LspInfoList    xxx links to Function
+    netrwClassify({ Function }), -- netrwClassify  xxx links to Function
+    netrwHelpCmd({ Function }), -- netrwHelpCmd   xxx links to Function
+    Identifier({ fg = palette.base.fg }), -- Identifier     xxx guifg=#cccccc
+    sym("@parameter")({ Identifier }), -- @parameter     xxx links to Identifier
+    sym("@field")({ Identifier }), -- @field         xxx links to Identifier
+    sym("@property")({ Identifier }), -- @property      xxx links to Identifier
+    sym("@variable")({ Identifier }), -- @variable      xxx links to Identifier
+    sym("@namespace")({ Identifier }), -- @namespace     xxx links to Identifier
+    sym("@lsp.type.parameter")({ Identifier }), -- @lsp.type.parameter xxx links to Identifier
+    sym("@lsp.type.property")({ Identifier }), -- @lsp.type.property xxx links to Identifier
+    sym("@lsp.type.variable")({ Identifier }), -- @lsp.type.variable xxx links to Identifier
+    NvimIdentifier({ Identifier }), -- NvimIdentifier xxx links to Identifier
+    TelescopePromptPrefix({ Identifier }), -- TelescopePromptPrefix xxx links to Identifier
+    TelescopeMultiIcon({ Identifier }), -- TelescopeMultiIcon xxx links to Identifier
+    TelescopeResultsIdentifier({ Identifier }), -- TelescopeResultsIdentifier xxx links to Identifier
+    MarkSignHL({ Identifier }), -- MarkSignHL     xxx links to Identifier
+    netrwVersion({ Identifier }), -- netrwVersion   xxx links to Identifier
+    Conditional({ fg = "#7189a8" }), -- Conditional    xxx guifg=#7189a8
+    sym("@conditional")({ Conditional }), -- @conditional   xxx links to Conditional
+    Statement({ fg = "#7189a8" }), -- Statement      xxx guifg=#7189a8
+    Repeat({ Statement }), -- Repeat         xxx links to Statement
+    Label({ Statement }), -- Label          xxx links to Statement
+    TelescopePreviewSocket({ Statement }), -- TelescopePreviewSocket xxx links to Statement
+    TelescopePreviewWrite({ Statement }), -- TelescopePreviewWrite xxx links to Statement
+    netrwHidePat({ Statement }), -- netrwHidePat   xxx links to Statement
+    netrwList({ Statement }), -- netrwList      xxx links to Statement
+    Operator({ fg = "#7189a8" }), -- Operator       xxx guifg=#7189a8
+    sym("@operator")({ Operator }), -- @operator      xxx links to Operator
+    NvimAssignment({ Operator }), -- NvimAssignment xxx links to Operator
+    NvimOperator({ Operator }), -- NvimOperator   xxx links to Operator
+    TelescopeResultsOperator({ Operator }), -- TelescopeResultsOperator xxx links to Operator
     -- Keyword { fg = "#a89684" }, -- Keyword        xxx guifg=#a89684
-    Exception { Keyword }, -- Exception      xxx links to Keyword
-    sym "@keyword" { Keyword }, -- @keyword       xxx links to Keyword
-    sym "@text.literal.block.markdown" { Keyword }, -- @text.literal.block.markdown xxx links to Keyword
-    sym "@text.literal.markdown_inline" { Keyword }, -- @text.literal.markdown_inline xxx links to Keyword
-    TelescopePreviewSticky { Keyword }, -- TelescopePreviewSticky xxx links to Keyword
-    OilSocket { Keyword }, -- OilSocket      xxx links to Keyword
-    Include { fg = "#7189a8" }, -- Include        xxx guifg=#7189a8
-    sym "@include" { Include }, -- @include       xxx links to Include
-    PreProc { fg = "#7189a8", gui = "bold" }, -- PreProc        xxx cterm=bold gui=bold guifg=#7189a8
-    sym "@preproc" { PreProc }, -- @preproc       xxx links to PreProc
-    netrwExe { PreProc }, -- netrwExe       xxx links to PreProc
-    Define { fg = "#7189a8", gui = "bold" }, -- Define         xxx cterm=bold gui=bold guifg=#7189a8
-    sym "@constant.macro" { Define }, -- @constant.macro xxx links to Define
-    sym "@define" { Define }, -- @define        xxx links to Define
-    Macro { fg = "#7189a8", gui = "bold" }, -- Macro          xxx cterm=bold gui=bold guifg=#7189a8
-    sym "@macro" { Macro }, -- @macro         xxx links to Macro
-    sym "@function.macro" { Macro }, -- @function.macro xxx links to Macro
-    sym "@lsp.type.macro" { Macro }, -- @lsp.type.macro xxx links to Macro
-    PreCondit { fg = "#7189a8", gui = "bold" }, -- PreCondit      xxx cterm=bold gui=bold guifg=#7189a8
-    Type { fg = palette.p.wheat }, -- Type           xxx cterm=bold gui=bold guifg=#ebcfb2
-    StorageClass { Type }, -- StorageClass   xxx links to Type
-    Structure { Type }, -- Structure      xxx links to Type
-    Typedef { Type }, -- Typedef        xxx links to Type
-    sym "@type" { Type }, -- @type          xxx links to Type
-    sym "@lsp.type.type" { Type }, -- @lsp.type.type xxx links to Type
-    NvimNumberPrefix { Type }, -- NvimNumberPrefix xxx links to Type
-    NvimOptionSigil { Type }, -- NvimOptionSigil xxx links to Type
-    TelescopeMultiSelection { Type }, -- TelescopeMultiSelection xxx links to Type
-    LspInfoFiletype { Type }, -- LspInfoFiletype xxx links to Type
-    Special { fg = "#616769" }, -- Special        xxx guifg=#696969
-    Tag { Special }, -- Tag            xxx links to Special
-    Delimiter { Special }, -- Delimiter      xxx links to Special
-    SpecialComment { Special }, -- SpecialComment xxx links to Special
-    Debug { Special }, -- Debug          xxx links to Special
-    sym "@constant.builtin" { fg = palette.p.smooth_navy }, -- @constant.builtin xxx links to Special
-    TelescopePreviewLink { Special }, -- TelescopePreviewLink xxx links to Special
-    OilChange { Special }, -- OilChange      xxx links to Special
-    netrwLink { Special }, -- netrwLink      xxx links to Special
-    netrwTreeBar { Special }, -- netrwTreeBar   xxx links to Special
-    netrwPix { Special }, -- netrwPix       xxx links to Special
-    DiagnosticError { fg = "#b1501b" }, -- DiagnosticError xxx guifg=#b1501b
-    DiagnosticVirtualTextError { DiagnosticError }, -- DiagnosticVirtualTextError xxx links to DiagnosticError
-    DiagnosticFloatingError { DiagnosticError }, -- DiagnosticFloatingError xxx links to DiagnosticError
-    DiagnosticSignError { DiagnosticError }, -- DiagnosticSignError xxx links to DiagnosticError
-    OilDelete { DiagnosticError }, -- OilDelete      xxx links to DiagnosticError
-    DiagnosticWarn { fg = "#d6b147" }, -- DiagnosticWarn xxx guifg=#d6b147
-    DiagnosticVirtualTextWarn { DiagnosticWarn }, -- DiagnosticVirtualTextWarn xxx links to DiagnosticWarn
-    DiagnosticFloatingWarn { DiagnosticWarn }, -- DiagnosticFloatingWarn xxx links to DiagnosticWarn
-    DiagnosticSignWarn { DiagnosticWarn }, -- DiagnosticSignWarn xxx links to DiagnosticWarn
-    OilMove { DiagnosticWarn }, -- OilMove        xxx links to DiagnosticWarn
-    DiagnosticInfo { fg = "#a1d5a1" }, -- DiagnosticInfo xxx guifg=#a1d5a1
-    DiagnosticVirtualTextInfo { DiagnosticInfo }, -- DiagnosticVirtualTextInfo xxx links to DiagnosticInfo
-    DiagnosticFloatingInfo { DiagnosticInfo }, -- DiagnosticFloatingInfo xxx links to DiagnosticInfo
-    DiagnosticSignInfo { DiagnosticInfo }, -- DiagnosticSignInfo xxx links to DiagnosticInfo
-    OilCreate { DiagnosticInfo }, -- OilCreate      xxx links to DiagnosticInfo
-    DiagnosticHint { fg = palette.p.dark_violet }, -- DiagnosticHint xxx guifg=#a1a1d5
-    DiagnosticVirtualTextHint { DiagnosticHint }, -- DiagnosticVirtualTextHint xxx links to DiagnosticHint
-    DiagnosticFloatingHint { DiagnosticHint }, -- DiagnosticFloatingHint xxx links to DiagnosticHint
-    DiagnosticSignHint { DiagnosticHint }, -- DiagnosticSignHint xxx links to DiagnosticHint
-    OilCopy { DiagnosticHint }, -- OilCopy        xxx links to DiagnosticHint
-    DiagnosticOk { fg = "lightgreen" }, -- DiagnosticOk   xxx ctermfg=10 guifg=LightGreen
-    DiagnosticVirtualTextOk { DiagnosticOk }, -- DiagnosticVirtualTextOk xxx links to DiagnosticOk
-    DiagnosticFloatingOk { DiagnosticOk }, -- DiagnosticFloatingOk xxx links to DiagnosticOk
-    DiagnosticSignOk { DiagnosticOk }, -- DiagnosticSignOk xxx links to DiagnosticOk
-    DiagnosticUnderlineError { sp = "#b1501b", gui = "underline" }, -- DiagnosticUnderlineError xxx guisp=#b1501b
-    DiagnosticUnderlineWarn { sp = "#d6b147" }, -- DiagnosticUnderlineWarn xxx guisp=#d6b147
-    DiagnosticUnderlineInfo { sp = "#a1d5a1" }, -- DiagnosticUnderlineInfo xxx guisp=#a1d5a1
-    DiagnosticUnderlineHint { sp = "#a1a1d5" }, -- DiagnosticUnderlineHint xxx guisp=#a1a1d5
-    DiagnosticUnderlineOk { sp = "lightgreen", gui = "underline" }, -- DiagnosticUnderlineOk xxx cterm=underline gui=underline guisp=LightGreen
-    DiagnosticDeprecated { fg = "#665d5c", gui = "italic,strikethrough" }, -- DiagnosticDeprecated xxx cterm=italic,strikethrough gui=italic,strikethrough guifg=#665d5c
-    DiagnosticUnnecessary { fg = "#665d5c", gui = "italic" }, -- DiagnosticUnnecessary xxx cterm=italic gui=italic guifg=#665d5c
+    Exception({ Keyword }), -- Exception      xxx links to Keyword
+    sym("@keyword")({ Keyword }), -- @keyword       xxx links to Keyword
+    sym("@text.literal.block.markdown")({ Keyword }), -- @text.literal.block.markdown xxx links to Keyword
+    sym("@text.literal.markdown_inline")({ Keyword }), -- @text.literal.markdown_inline xxx links to Keyword
+    TelescopePreviewSticky({ Keyword }), -- TelescopePreviewSticky xxx links to Keyword
+    OilSocket({ Keyword }), -- OilSocket      xxx links to Keyword
+    Include({ fg = "#7189a8" }), -- Include        xxx guifg=#7189a8
+    sym("@include")({ Include }), -- @include       xxx links to Include
+    PreProc({ fg = "#7189a8", gui = "bold" }), -- PreProc        xxx cterm=bold gui=bold guifg=#7189a8
+    sym("@preproc")({ PreProc }), -- @preproc       xxx links to PreProc
+    netrwExe({ PreProc }), -- netrwExe       xxx links to PreProc
+    Define({ fg = "#7189a8", gui = "bold" }), -- Define         xxx cterm=bold gui=bold guifg=#7189a8
+    sym("@constant.macro")({ Define }), -- @constant.macro xxx links to Define
+    sym("@define")({ Define }), -- @define        xxx links to Define
+    Macro({ fg = "#7189a8", gui = "bold" }), -- Macro          xxx cterm=bold gui=bold guifg=#7189a8
+    sym("@macro")({ Macro }), -- @macro         xxx links to Macro
+    sym("@function.macro")({ Macro }), -- @function.macro xxx links to Macro
+    sym("@lsp.type.macro")({ Macro }), -- @lsp.type.macro xxx links to Macro
+    PreCondit({ fg = "#7189a8", gui = "bold" }), -- PreCondit      xxx cterm=bold gui=bold guifg=#7189a8
+    Type({ fg = palette.p.wheat }), -- Type           xxx cterm=bold gui=bold guifg=#ebcfb2
+    StorageClass({ Type }), -- StorageClass   xxx links to Type
+    Structure({ Type }), -- Structure      xxx links to Type
+    Typedef({ Type }), -- Typedef        xxx links to Type
+    sym("@type")({ Type }), -- @type          xxx links to Type
+    sym("@lsp.type.type")({ Type }), -- @lsp.type.type xxx links to Type
+    NvimNumberPrefix({ Type }), -- NvimNumberPrefix xxx links to Type
+    NvimOptionSigil({ Type }), -- NvimOptionSigil xxx links to Type
+    TelescopeMultiSelection({ Type }), -- TelescopeMultiSelection xxx links to Type
+    LspInfoFiletype({ Type }), -- LspInfoFiletype xxx links to Type
+    Special({ fg = "#616769" }), -- Special        xxx guifg=#696969
+    Tag({ Special }), -- Tag            xxx links to Special
+    Delimiter({ Special }), -- Delimiter      xxx links to Special
+    SpecialComment({ Special }), -- SpecialComment xxx links to Special
+    Debug({ Special }), -- Debug          xxx links to Special
+    sym("@constant.builtin")({ fg = palette.p.smooth_navy }), -- @constant.builtin xxx links to Special
+    TelescopePreviewLink({ Special }), -- TelescopePreviewLink xxx links to Special
+    OilChange({ Special }), -- OilChange      xxx links to Special
+    netrwLink({ Special }), -- netrwLink      xxx links to Special
+    netrwTreeBar({ Special }), -- netrwTreeBar   xxx links to Special
+    netrwPix({ Special }), -- netrwPix       xxx links to Special
+    DiagnosticError({ fg = "#b1501b" }), -- DiagnosticError xxx guifg=#b1501b
+    DiagnosticVirtualTextError({ DiagnosticError }), -- DiagnosticVirtualTextError xxx links to DiagnosticError
+    DiagnosticFloatingError({ DiagnosticError }), -- DiagnosticFloatingError xxx links to DiagnosticError
+    DiagnosticSignError({ DiagnosticError }), -- DiagnosticSignError xxx links to DiagnosticError
+    OilDelete({ DiagnosticError }), -- OilDelete      xxx links to DiagnosticError
+    DiagnosticWarn({ fg = "#d6b147" }), -- DiagnosticWarn xxx guifg=#d6b147
+    DiagnosticVirtualTextWarn({ DiagnosticWarn }), -- DiagnosticVirtualTextWarn xxx links to DiagnosticWarn
+    DiagnosticFloatingWarn({ DiagnosticWarn }), -- DiagnosticFloatingWarn xxx links to DiagnosticWarn
+    DiagnosticSignWarn({ DiagnosticWarn }), -- DiagnosticSignWarn xxx links to DiagnosticWarn
+    OilMove({ DiagnosticWarn }), -- OilMove        xxx links to DiagnosticWarn
+    DiagnosticInfo({ fg = "#a1d5a1" }), -- DiagnosticInfo xxx guifg=#a1d5a1
+    DiagnosticVirtualTextInfo({ DiagnosticInfo }), -- DiagnosticVirtualTextInfo xxx links to DiagnosticInfo
+    DiagnosticFloatingInfo({ DiagnosticInfo }), -- DiagnosticFloatingInfo xxx links to DiagnosticInfo
+    DiagnosticSignInfo({ DiagnosticInfo }), -- DiagnosticSignInfo xxx links to DiagnosticInfo
+    OilCreate({ DiagnosticInfo }), -- OilCreate      xxx links to DiagnosticInfo
+    DiagnosticHint({ fg = palette.p.dark_violet }), -- DiagnosticHint xxx guifg=#a1a1d5
+    DiagnosticVirtualTextHint({ DiagnosticHint }), -- DiagnosticVirtualTextHint xxx links to DiagnosticHint
+    DiagnosticFloatingHint({ DiagnosticHint }), -- DiagnosticFloatingHint xxx links to DiagnosticHint
+    DiagnosticSignHint({ DiagnosticHint }), -- DiagnosticSignHint xxx links to DiagnosticHint
+    OilCopy({ DiagnosticHint }), -- OilCopy        xxx links to DiagnosticHint
+    DiagnosticOk({ fg = "lightgreen" }), -- DiagnosticOk   xxx ctermfg=10 guifg=LightGreen
+    DiagnosticVirtualTextOk({ DiagnosticOk }), -- DiagnosticVirtualTextOk xxx links to DiagnosticOk
+    DiagnosticFloatingOk({ DiagnosticOk }), -- DiagnosticFloatingOk xxx links to DiagnosticOk
+    DiagnosticSignOk({ DiagnosticOk }), -- DiagnosticSignOk xxx links to DiagnosticOk
+    DiagnosticUnderlineError({ sp = "#b1501b", gui = "underline" }), -- DiagnosticUnderlineError xxx guisp=#b1501b
+    DiagnosticUnderlineWarn({ sp = "#d6b147" }), -- DiagnosticUnderlineWarn xxx guisp=#d6b147
+    DiagnosticUnderlineInfo({ sp = "#a1d5a1" }), -- DiagnosticUnderlineInfo xxx guisp=#a1d5a1
+    DiagnosticUnderlineHint({ sp = "#a1a1d5" }), -- DiagnosticUnderlineHint xxx guisp=#a1a1d5
+    DiagnosticUnderlineOk({ sp = "lightgreen", gui = "underline" }), -- DiagnosticUnderlineOk xxx cterm=underline gui=underline guisp=LightGreen
+    DiagnosticDeprecated({ fg = "#665d5c", gui = "italic,strikethrough" }), -- DiagnosticDeprecated xxx cterm=italic,strikethrough gui=italic,strikethrough guifg=#665d5c
+    DiagnosticUnnecessary({ fg = "#665d5c", gui = "italic" }), -- DiagnosticUnnecessary xxx cterm=italic gui=italic guifg=#665d5c
     -- Comment { fg = "#665d5c", gui = "italic" }, -- Comment        xxx cterm=italic gui=italic guifg=#665d5c
-    sym "@text.literal" { Comment }, -- @text.literal  xxx links to Comment
-    sym "@comment" { Comment }, -- @comment       xxx links to Comment
-    sym "@lsp.type.comment" { Comment }, -- @lsp.type.comment xxx links to Comment
-    sym "@variable.luadoc" { Comment }, -- @variable.luadoc xxx links to Comment
-    LazyComment { Comment }, -- LazyComment    xxx links to Comment
-    TelescopeResultsComment { Comment }, -- TelescopeResultsComment xxx links to Comment
-    MarkVirtTextHL { Comment }, -- MarkVirtTextHL xxx links to Comment
-    OilLinkTarget { Comment }, -- OilLinkTarget  xxx links to Comment
-    OilTrashSourcePath { Comment }, -- OilTrashSourcePath xxx links to Comment
-    LspInfoTip { Comment }, -- LspInfoTip     xxx links to Comment
-    netrwComment { Comment }, -- netrwComment   xxx links to Comment
-    sym "@text.reference" { fg = "#cccccc", gui = "bold" }, -- @text.reference xxx cterm=bold gui=bold guifg=#cccccc
-    Underlined { fg = "#80a0ff", gui = "underline" }, -- Underlined     xxx cterm=underline ctermfg=81 gui=underline guifg=#80a0ff
-    SpecialChar { Underlined }, -- SpecialChar    xxx links to Special
-    sym "@string.escape" { fg = "#80a0ff" }, -- SpecialChar
-    sym "@text.uri" { Underlined }, -- @text.uri      xxx links to Underlined
-    sym "@markup.link.url" { Underlined },
-    sym "@text.underline" { Underlined }, -- @text.underline xxx links to Underlined
-    sym "@function.builtin" { fg = "#7189a8" }, -- @function.builtin xxx guifg=#7189a8
-    sym "@tag.tsx" { fg = palette.p.ash }, -- @function.builtin xxx guifg=#7189a8
-    sym "@constructor" { fg = "#928374" }, -- @constructor   xxx guifg=#928374
-    sym "@tag" { fg = "#7189a8" }, -- @tag           xxx guifg=#7189a8
-    MatchParen { gui = "bold,underline" }, -- MatchParen     xxx cterm=bold,underline gui=bold,underline
-    Ignore { fg = "bg" }, -- Ignore         xxx ctermfg=0 guifg=bg
-    NvimInternalError { bg = "red" }, -- NvimInternalError xxx ctermfg=9 ctermbg=9 guifg=Red guibg=Red
-    NvimFigureBrace { NvimInternalError }, -- NvimFigureBrace xxx links to NvimInternalError
-    NvimSingleQuotedUnknownEscape { NvimInternalError }, -- NvimSingleQuotedUnknownEscape xxx links to NvimInternalError
-    NvimInvalidSingleQuotedUnknownEscape { NvimInternalError }, -- NvimInvalidSingleQuotedUnknownEscape xxx links to NvimInternalError
-    NotifyINFOBorder { fg = "#323232", bg = "#323232" }, -- NotifyINFOBorder xxx guifg=#323232 guibg=#323232
-    NotifyWARNBorder { fg = "#323232", bg = "#323232" }, -- NotifyWARNBorder xxx guifg=#323232 guibg=#323232
-    NotifyERRORBorder { fg = "#323232", bg = "#323232" }, -- NotifyERRORBorder xxx guifg=#323232 guibg=#323232
-    sym "@text.todo.checked" { fg = "#a1d5a1", gui = "strikethrough" }, -- @text.todo.checked xxx cterm=strikethrough gui=strikethrough guifg=#a1d5a1
-    sym "@text.todo.unchecked" { fg = "#b1501b" }, -- @text.todo.unchecked xxx guifg=#b1501b
-    IlluminatedWordWrite { bg = "#323232" }, -- IlluminatedWordWrite xxx guibg=#323232
-    IlluminatedWordRead { bg = "#323232" }, -- IlluminatedWordRead xxx guibg=#323232
-    IlluminatedWordText { bg = "#323232" }, -- IlluminatedWordText xxx guibg=#323232
-    GitSignsDelete { fg = "#b1501b" }, -- GitSignsDelete xxx guifg=#b1501b
-    GitSignsTopdelete { GitSignsDelete }, -- GitSignsTopdelete xxx links to GitSignsDelete
-    GitSignsDeleteNr { GitSignsDelete }, -- GitSignsDeleteNr xxx links to GitSignsDelete
-    GitSignsChange { fg = "#d6b147" }, -- GitSignsChange xxx guifg=#d6b147
-    GitSignsChangedelete { GitSignsChange }, -- GitSignsChangedelete xxx links to GitSignsChange
-    GitSignsChangeNr { GitSignsChange }, -- GitSignsChangeNr xxx links to GitSignsChange
-    GitSignsAdd { fg = "#a1d5a1" }, -- GitSignsAdd    xxx guifg=#a1d5a1
-    GitSignsUntracked { GitSignsAdd }, -- GitSignsUntracked xxx links to GitSignsAdd
-    GitSignsAddNr { GitSignsAdd }, -- GitSignsAddNr  xxx links to GitSignsAdd
-    LazyButtonActive { fg = "#080e07", gui = "bold", bg = "#7c9ffa" }, -- LazyButtonActive xxx cterm=bold gui=bold guifg=#080e07 guibg=#7c9ffa
-    IndentBlanklineContextStart { sp = "#4d5766", gui = "underline" }, -- IndentBlanklineContextStart xxx cterm=underline gui=underline guisp=#4d5766
-    IndentBlanklineContextChar { fg = "#4d5766" }, -- IndentBlanklineContextChar xxx guifg=#4d5766
-    IndentBlanklineChar { fg = "#282828" }, -- IndentBlanklineChar xxx guifg=#282828
-    TelescopePreviewTitle { fg = "#080e07", bg = "#ebcfb2" }, -- TelescopePreviewTitle xxx guifg=#080e07 guibg=#ebcfb2
-    TelescopePreviewNormal { bg = "#141414" }, -- TelescopePreviewNormal xxx guibg=#141414
-    TelescopePreviewMessage { TelescopePreviewNormal }, -- TelescopePreviewMessage xxx links to TelescopePreviewNormal
-    TelescopePreviewBorder { fg = "#665d5c", bg = "#141414" }, -- TelescopePreviewBorder xxx guifg=#665d5c guibg=#141414
-    TelescopeMatching { fg = "#ebcfb2", gui = "bold" }, -- TelescopeMatching xxx cterm=bold gui=bold guifg=#ebcfb2
-    TelescopeSelectionCaret { fg = "#b1501b" }, -- TelescopeSelectionCaret xxx guifg=#b1501b
-    TelescopeResultsNormal { bg = "#141414" }, -- TelescopeResultsNormal xxx guibg=#141414
-    TelescopeResultsBorder { fg = "#665d5c", bg = "#141414" }, -- TelescopeResultsBorder xxx guifg=#665d5c guibg=#141414
-    TelescopeResultsTitle { fg = "#080e07", bg = "#ebcfb2" }, -- TelescopeResultsTitle xxx guifg=#080e07 guibg=#ebcfb2
-    TelescopePromptCounter { fg = "#7c9ffa", gui = "bold" }, -- TelescopePromptCounter xxx cterm=bold gui=bold guifg=#7c9ffa
-    TelescopePromptNormal { bg = "#141414" }, -- TelescopePromptNormal xxx guibg=#141414
-    TelescopePromptBorder { fg = "#665d5c", bg = "#141414" }, -- TelescopePromptBorder xxx guifg=#665d5c guibg=#141414
-    NotifyTRACETitle { fg = "#7c9ffa" }, -- NotifyTRACETitle xxx guifg=#7c9ffa
-    NotifyINFOTitle { fg = "#7c9ffa" }, -- NotifyINFOTitle xxx guifg=#7c9ffa
-    IndentBlanklineSpaceCharBlankline { fg = "#7c9ffa", gui = "nocombine" }, -- IndentBlanklineSpaceCharBlankline xxx cterm=nocombine gui=nocombine guifg=#7c9ffa
-    IndentBlanklineSpaceChar { fg = "#7c9ffa", gui = "nocombine" }, -- IndentBlanklineSpaceChar xxx cterm=nocombine gui=nocombine guifg=#7c9ffa
-    CmpItemAbbrDeprecatedDefault { fg = "#665d5c" }, -- CmpItemAbbrDeprecatedDefault xxx guifg=#665d5c
-    CmpItemAbbrDeprecated { CmpItemAbbrDeprecatedDefault }, -- CmpItemAbbrDeprecated xxx links to CmpItemAbbrDeprecatedDefault
-    CmpItemKindDefault { fg = "#696969" }, -- CmpItemKindDefault xxx guifg=#696969
-    CmpItemKind { CmpItemKindDefault }, -- CmpItemKind    xxx links to CmpItemKindDefault
-    TreesitterContext { fg = palette.base.fg, bg = "#2a2f37" }, -- TreesitterContext xxx guifg=#ffffff guibg=#2a2f37
-    Sneak { fg = "#002335", bg = "#ffd5d1" }, -- Sneak          xxx guifg=#002335 guibg=#ffd5d1
-    diffAdded { fg = "#32a0b4", bg = "#28383c" }, -- diffAdded      xxx guifg=#32a0b4 guibg=#28383c
-    diffRemoved { fg = "#b40000", bg = "#28383c" }, -- diffRemoved    xxx guifg=#b40000 guibg=#28383c
-    diffLine { fg = "#a2926c" }, -- diffLine       xxx guifg=#a2926c
-    diffNoEOL { fg = "#a2926c" }, -- diffNoEOL      xxx guifg=#a2926c
+    sym("@text.literal")({ Comment }), -- @text.literal  xxx links to Comment
+    sym("@comment")({ Comment }), -- @comment       xxx links to Comment
+    sym("@lsp.type.comment")({ Comment }), -- @lsp.type.comment xxx links to Comment
+    sym("@variable.luadoc")({ Comment }), -- @variable.luadoc xxx links to Comment
+    LazyComment({ Comment }), -- LazyComment    xxx links to Comment
+    TelescopeResultsComment({ Comment }), -- TelescopeResultsComment xxx links to Comment
+    MarkVirtTextHL({ Comment }), -- MarkVirtTextHL xxx links to Comment
+    OilLinkTarget({ Comment }), -- OilLinkTarget  xxx links to Comment
+    OilTrashSourcePath({ Comment }), -- OilTrashSourcePath xxx links to Comment
+    LspInfoTip({ Comment }), -- LspInfoTip     xxx links to Comment
+    netrwComment({ Comment }), -- netrwComment   xxx links to Comment
+    sym("@text.reference")({ fg = "#cccccc", gui = "bold" }), -- @text.reference xxx cterm=bold gui=bold guifg=#cccccc
+    Underlined({ fg = "#80a0ff", gui = "underline" }), -- Underlined     xxx cterm=underline ctermfg=81 gui=underline guifg=#80a0ff
+    SpecialChar({ Underlined }), -- SpecialChar    xxx links to Special
+    sym("@string.escape")({ fg = "#80a0ff" }), -- SpecialChar
+    sym("@text.uri")({ Underlined }), -- @text.uri      xxx links to Underlined
+    sym("@markup.link.url")({ Underlined }),
+    sym("@text.underline")({ Underlined }), -- @text.underline xxx links to Underlined
+    sym("@function.builtin")({ fg = "#7189a8" }), -- @function.builtin xxx guifg=#7189a8
+    sym("@tag.tsx")({ fg = palette.p.ash }), -- @function.builtin xxx guifg=#7189a8
+    sym("@constructor")({ fg = "#928374" }), -- @constructor   xxx guifg=#928374
+    sym("@tag")({ fg = "#7189a8" }), -- @tag           xxx guifg=#7189a8
+    MatchParen({ gui = "bold,underline" }), -- MatchParen     xxx cterm=bold,underline gui=bold,underline
+    Ignore({ fg = "bg" }), -- Ignore         xxx ctermfg=0 guifg=bg
+    NvimInternalError({ bg = "red" }), -- NvimInternalError xxx ctermfg=9 ctermbg=9 guifg=Red guibg=Red
+    NvimFigureBrace({ NvimInternalError }), -- NvimFigureBrace xxx links to NvimInternalError
+    NvimSingleQuotedUnknownEscape({ NvimInternalError }), -- NvimSingleQuotedUnknownEscape xxx links to NvimInternalError
+    NvimInvalidSingleQuotedUnknownEscape({ NvimInternalError }), -- NvimInvalidSingleQuotedUnknownEscape xxx links to NvimInternalError
+    NotifyINFOBorder({ fg = "#323232", bg = "#323232" }), -- NotifyINFOBorder xxx guifg=#323232 guibg=#323232
+    NotifyWARNBorder({ fg = "#323232", bg = "#323232" }), -- NotifyWARNBorder xxx guifg=#323232 guibg=#323232
+    NotifyERRORBorder({ fg = "#323232", bg = "#323232" }), -- NotifyERRORBorder xxx guifg=#323232 guibg=#323232
+    sym("@text.todo.checked")({ fg = "#a1d5a1", gui = "strikethrough" }), -- @text.todo.checked xxx cterm=strikethrough gui=strikethrough guifg=#a1d5a1
+    sym("@text.todo.unchecked")({ fg = "#b1501b" }), -- @text.todo.unchecked xxx guifg=#b1501b
+    IlluminatedWordWrite({ bg = "#323232" }), -- IlluminatedWordWrite xxx guibg=#323232
+    IlluminatedWordRead({ bg = "#323232" }), -- IlluminatedWordRead xxx guibg=#323232
+    IlluminatedWordText({ bg = "#323232" }), -- IlluminatedWordText xxx guibg=#323232
+    GitSignsDelete({ fg = "#b1501b" }), -- GitSignsDelete xxx guifg=#b1501b
+    GitSignsTopdelete({ GitSignsDelete }), -- GitSignsTopdelete xxx links to GitSignsDelete
+    GitSignsDeleteNr({ GitSignsDelete }), -- GitSignsDeleteNr xxx links to GitSignsDelete
+    GitSignsChange({ fg = "#d6b147" }), -- GitSignsChange xxx guifg=#d6b147
+    GitSignsChangedelete({ GitSignsChange }), -- GitSignsChangedelete xxx links to GitSignsChange
+    GitSignsChangeNr({ GitSignsChange }), -- GitSignsChangeNr xxx links to GitSignsChange
+    GitSignsAdd({ fg = "#a1d5a1" }), -- GitSignsAdd    xxx guifg=#a1d5a1
+    GitSignsUntracked({ GitSignsAdd }), -- GitSignsUntracked xxx links to GitSignsAdd
+    GitSignsAddNr({ GitSignsAdd }), -- GitSignsAddNr  xxx links to GitSignsAdd
+    LazyButtonActive({ fg = "#080e07", gui = "bold", bg = "#7c9ffa" }), -- LazyButtonActive xxx cterm=bold gui=bold guifg=#080e07 guibg=#7c9ffa
+    IndentBlanklineContextStart({ sp = "#4d5766", gui = "underline" }), -- IndentBlanklineContextStart xxx cterm=underline gui=underline guisp=#4d5766
+    IndentBlanklineContextChar({ fg = "#4d5766" }), -- IndentBlanklineContextChar xxx guifg=#4d5766
+    IndentBlanklineChar({ fg = "#282828" }), -- IndentBlanklineChar xxx guifg=#282828
+    TelescopePreviewTitle({ fg = "#080e07", bg = "#ebcfb2" }), -- TelescopePreviewTitle xxx guifg=#080e07 guibg=#ebcfb2
+    TelescopePreviewNormal({ bg = "#141414" }), -- TelescopePreviewNormal xxx guibg=#141414
+    TelescopePreviewMessage({ TelescopePreviewNormal }), -- TelescopePreviewMessage xxx links to TelescopePreviewNormal
+    TelescopePreviewBorder({ fg = "#665d5c", bg = "#141414" }), -- TelescopePreviewBorder xxx guifg=#665d5c guibg=#141414
+    TelescopeMatching({ fg = "#ebcfb2", gui = "bold" }), -- TelescopeMatching xxx cterm=bold gui=bold guifg=#ebcfb2
+    TelescopeSelectionCaret({ fg = "#b1501b" }), -- TelescopeSelectionCaret xxx guifg=#b1501b
+    TelescopeResultsNormal({ bg = "#141414" }), -- TelescopeResultsNormal xxx guibg=#141414
+    TelescopeResultsBorder({ fg = "#665d5c", bg = "#141414" }), -- TelescopeResultsBorder xxx guifg=#665d5c guibg=#141414
+    TelescopeResultsTitle({ fg = "#080e07", bg = "#ebcfb2" }), -- TelescopeResultsTitle xxx guifg=#080e07 guibg=#ebcfb2
+    TelescopePromptCounter({ fg = "#7c9ffa", gui = "bold" }), -- TelescopePromptCounter xxx cterm=bold gui=bold guifg=#7c9ffa
+    TelescopePromptNormal({ bg = "#141414" }), -- TelescopePromptNormal xxx guibg=#141414
+    TelescopePromptBorder({ fg = "#665d5c", bg = "#141414" }), -- TelescopePromptBorder xxx guifg=#665d5c guibg=#141414
+    NotifyTRACETitle({ fg = "#7c9ffa" }), -- NotifyTRACETitle xxx guifg=#7c9ffa
+    NotifyINFOTitle({ fg = "#7c9ffa" }), -- NotifyINFOTitle xxx guifg=#7c9ffa
+    IndentBlanklineSpaceCharBlankline({ fg = "#7c9ffa", gui = "nocombine" }), -- IndentBlanklineSpaceCharBlankline xxx cterm=nocombine gui=nocombine guifg=#7c9ffa
+    IndentBlanklineSpaceChar({ fg = "#7c9ffa", gui = "nocombine" }), -- IndentBlanklineSpaceChar xxx cterm=nocombine gui=nocombine guifg=#7c9ffa
+    CmpItemAbbrDeprecatedDefault({ fg = "#665d5c" }), -- CmpItemAbbrDeprecatedDefault xxx guifg=#665d5c
+    CmpItemAbbrDeprecated({ CmpItemAbbrDeprecatedDefault }), -- CmpItemAbbrDeprecated xxx links to CmpItemAbbrDeprecatedDefault
+    CmpItemKindDefault({ fg = "#696969" }), -- CmpItemKindDefault xxx guifg=#696969
+    CmpItemKind({ CmpItemKindDefault }), -- CmpItemKind    xxx links to CmpItemKindDefault
+    TreesitterContext({ fg = palette.base.fg, bg = "#2a2f37" }), -- TreesitterContext xxx guifg=#ffffff guibg=#2a2f37
+    Sneak({ fg = "#002335", bg = "#ffd5d1" }), -- Sneak          xxx guifg=#002335 guibg=#ffd5d1
+    diffAdded({ fg = "#32a0b4", bg = "#28383c" }), -- diffAdded      xxx guifg=#32a0b4 guibg=#28383c
+    diffRemoved({ fg = "#b40000", bg = "#28383c" }), -- diffRemoved    xxx guifg=#b40000 guibg=#28383c
+    diffLine({ fg = "#a2926c" }), -- diffLine       xxx guifg=#a2926c
+    diffNoEOL({ fg = "#a2926c" }), -- diffNoEOL      xxx guifg=#a2926c
     -- lualine_a_inactive { fg = "#8f968e", gui = "bold", bg = "#2a3e5b" }, -- lualine_a_inactive xxx gui=bold guifg=#8f968e guibg=#2a3e5b
     -- lualine_c_inactive { fg = "#e0e0e0", bg = "#161616" }, -- lualine_c_inactive xxx guifg=#e0e0e0 guibg=#161616
     -- lualine_b_inactive { fg = "#435774", bg = "#080f07" }, -- lualine_b_inactive xxx guifg=#435774 guibg=#080f07
@@ -694,19 +694,19 @@ local theme = lush(function(injected_functions)
     -- lualine_c_diagnostics_hint_command { fg = "#a1a1d5", bg = "#161616" }, -- lualine_c_diagnostics_hint_command xxx guifg=#a1a1d5 guibg=#161616
     -- lualine_c_diagnostics_hint_terminal { fg = "#a1a1d5", bg = "#161616" }, -- lualine_c_diagnostics_hint_terminal xxx guifg=#a1a1d5 guibg=#161616
     -- lualine_c_diagnostics_hint_inactive { fg = "#a1a1d5", bg = "#161616" }, -- lualine_c_diagnostics_hint_inactive xxx guifg=#a1a1d5 guibg=#161616
-    GitSignsStagedAdd { fg = "#506a50" }, -- GitSignsStagedAdd xxx guifg=#506a50
-    GitSignsStagedChange { fg = "#6b5823" }, -- GitSignsStagedChange xxx guifg=#6b5823
-    GitSignsStagedDelete { fg = "#58280d" }, -- GitSignsStagedDelete xxx guifg=#58280d
-    GitSignsStagedChangedelete { fg = "#6b5823" }, -- GitSignsStagedChangedelete xxx guifg=#6b5823
-    GitSignsStagedTopdelete { fg = "#58280d" }, -- GitSignsStagedTopdelete xxx guifg=#58280d
-    GitSignsStagedAddNr { fg = "#506a50" }, -- GitSignsStagedAddNr xxx guifg=#506a50
-    GitSignsStagedChangeNr { fg = "#6b5823" }, -- GitSignsStagedChangeNr xxx guifg=#6b5823
-    GitSignsStagedDeleteNr { fg = "#58280d" }, -- GitSignsStagedDeleteNr xxx guifg=#58280d
-    GitSignsStagedChangedeleteNr { fg = "#6b5823" }, -- GitSignsStagedChangedeleteNr xxx guifg=#6b5823
-    GitSignsStagedTopdeleteNr { fg = "#58280d" }, -- GitSignsStagedTopdeleteNr xxx guifg=#58280d
-    GitSignsStagedAddLn { fg = "#666666", bg = "#204437" }, -- GitSignsStagedAddLn xxx guifg=#666666 guibg=#204437
-    GitSignsStagedChangeLn { bg = "#1f2325" }, -- GitSignsStagedChangeLn xxx guibg=#1f2325
-    GitSignsStagedChangedeleteLn { bg = "#1f2325" }, -- GitSignsStagedChangedeleteLn xxx guibg=#1f2325
+    GitSignsStagedAdd({ fg = "#506a50" }), -- GitSignsStagedAdd xxx guifg=#506a50
+    GitSignsStagedChange({ fg = "#6b5823" }), -- GitSignsStagedChange xxx guifg=#6b5823
+    GitSignsStagedDelete({ fg = "#58280d" }), -- GitSignsStagedDelete xxx guifg=#58280d
+    GitSignsStagedChangedelete({ fg = "#6b5823" }), -- GitSignsStagedChangedelete xxx guifg=#6b5823
+    GitSignsStagedTopdelete({ fg = "#58280d" }), -- GitSignsStagedTopdelete xxx guifg=#58280d
+    GitSignsStagedAddNr({ fg = "#506a50" }), -- GitSignsStagedAddNr xxx guifg=#506a50
+    GitSignsStagedChangeNr({ fg = "#6b5823" }), -- GitSignsStagedChangeNr xxx guifg=#6b5823
+    GitSignsStagedDeleteNr({ fg = "#58280d" }), -- GitSignsStagedDeleteNr xxx guifg=#58280d
+    GitSignsStagedChangedeleteNr({ fg = "#6b5823" }), -- GitSignsStagedChangedeleteNr xxx guifg=#6b5823
+    GitSignsStagedTopdeleteNr({ fg = "#58280d" }), -- GitSignsStagedTopdeleteNr xxx guifg=#58280d
+    GitSignsStagedAddLn({ fg = "#666666", bg = "#204437" }), -- GitSignsStagedAddLn xxx guifg=#666666 guibg=#204437
+    GitSignsStagedChangeLn({ bg = "#1f2325" }), -- GitSignsStagedChangeLn xxx guibg=#1f2325
+    GitSignsStagedChangedeleteLn({ bg = "#1f2325" }), -- GitSignsStagedChangedeleteLn xxx guibg=#1f2325
   }
 end)
 
