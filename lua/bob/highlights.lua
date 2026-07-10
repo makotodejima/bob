@@ -163,9 +163,9 @@ return {
   ["@function.builtin"] = { fg = p.smooth_blue },
 
   -- Git signs
-  GitSignsAdd = { fg = u.lighten(p.diff_added_bg, 30) },
+  GitSignsAdd = { fg = u.lighten(p.diff_added_bg, 40) },
   GitSignsChange = { fg = p.wheat },
-  GitSignsDelete = { fg = u.lighten(p.diff_deleted_bg, 30) },
+  GitSignsDelete = { fg = u.lighten(p.diff_deleted_bg, 40) },
 
   -- Error and Todo
   Error = { fg = "white", bg = "red" }, -- From legacy Error
@@ -213,4 +213,8 @@ return {
 
   TelescopeSelection = { link = "Visual" },
   TelescopePreviewLine = { link = "Visual" },
+
+  -- nvim-pasta
+  PastaCursor = { reverse = true },
+  PastaEntry = { reverse = true },
 }
