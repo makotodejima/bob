@@ -1,7 +1,11 @@
 local M = {}
 
-function M.setup(opts)
-  local config = require("bob.config").setup(opts)
+function M.load(opts)
+  if opts then
+    require("bob.config").setup(opts)
+  end
+
+  local config = require("bob.config").options
   local palette = vim.deepcopy(require("bob.palette"))
 
   config.on_colors(palette)
@@ -31,6 +35,14 @@ function M.setup(opts)
   -- vim.g.terminal_color_13 = palette.dark_violet
   -- vim.g.terminal_color_14 = palette.accent_blue
   -- vim.g.terminal_color_15 = palette.text
+end
+
+function M.setup(opts)
+  require("bob.config").setup(opts)
+
+  if vim.g.colors_name == "bob" then
+    M.load()
+  end
 end
 
 return M

@@ -7,4 +7,4 @@ end
 vim.o.background = "dark"
 vim.g.colors_name = "bob"
 
-require("bob").setup()
+require("bob").load()
