@@ -1,10 +1,16 @@
 local M = {}
 
-function M.setup()
-  local palette = require("bob.palette")
+function M.setup(opts)
+  local config = require("bob.config").setup(opts)
+  local palette = vim.deepcopy(require("bob.palette"))
+
+  config.on_colors(palette)
+
+  local highlights = require("bob.highlights").get(palette, config)
+  config.on_highlights(highlights, palette)
 
   -- Apply all highlight groups
-  for group_name, group_settings in pairs(require("bob.highlights")) do
+  for group_name, group_settings in pairs(highlights) do
     vim.api.nvim_set_hl(0, group_name, group_settings)
   end
 
