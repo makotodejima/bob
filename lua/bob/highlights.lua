@@ -149,20 +149,110 @@ function M.get(p, config)
     LspCodeLens = { fg = p.muted, italic = true },
     LspCodeLensSeparator = { fg = p.muted },
 
-    -- Treesitter
+    -- Treesitter: identifiers
     ["@variable"] = { fg = p.text },
     ["@variable.builtin"] = { fg = p.text },
     ["@variable.parameter"] = { fg = p.text },
     ["@variable.member"] = { fg = p.text },
     ["@property"] = { fg = p.text },
     ["@field"] = { fg = p.text },
+    ["@module"] = { fg = p.text },
+    ["@label"] = { link = "Label" },
 
+    -- Treesitter: literals
+    ["@constant"] = { link = "Constant" },
     ["@constant.builtin"] = { fg = p.smooth_navy },
+    ["@constant.macro"] = { link = "Macro" },
+    ["@string"] = { link = "String" },
     ["@string.escape"] = { fg = p.accent_blue },
+    ["@string.regexp"] = { fg = p.accent_blue },
+    ["@string.special"] = { fg = p.accent_blue },
+    ["@string.special.url"] = { fg = p.accent_blue, underline = true },
+    ["@character"] = { link = "Character" },
+    ["@number"] = { link = "Number" },
+    ["@number.float"] = { link = "Float" },
+    ["@boolean"] = { link = "Boolean" },
+
+    -- Treesitter: functions
+    ["@function"] = { link = "Function" },
+    ["@function.call"] = { link = "Function" },
+    ["@function.builtin"] = { fg = p.smooth_blue },
+    ["@function.method"] = { link = "Function" },
+    ["@function.method.call"] = { link = "Function" },
+    ["@function.macro"] = { link = "Macro" },
+    ["@constructor"] = { fg = p.chill },
+
+    -- Treesitter: keywords
+    ["@keyword"] = { link = "Keyword" },
+    ["@keyword.function"] = { link = "Keyword" },
+    ["@keyword.return"] = { link = "Keyword" },
+    ["@keyword.operator"] = { link = "Operator" },
+    ["@keyword.import"] = { link = "Include" },
+    ["@keyword.conditional"] = { link = "Conditional" },
+    ["@keyword.repeat"] = { link = "Repeat" },
+    ["@keyword.exception"] = { link = "Exception" },
+    ["@keyword.directive"] = { link = "PreProc" },
+    ["@operator"] = { link = "Operator" },
+
+    -- Treesitter: types
+    ["@type"] = { link = "Type" },
+    ["@type.builtin"] = { link = "Type" },
+    ["@type.definition"] = { link = "Typedef" },
+    ["@attribute"] = { fg = p.smooth_blue },
+    ["@attribute.builtin"] = { fg = p.smooth_blue },
+
+    -- Treesitter: punctuation
+    ["@punctuation.delimiter"] = { link = "Delimiter" },
+    ["@punctuation.bracket"] = { link = "Delimiter" },
+    ["@punctuation.special"] = { link = "Special" },
+
+    -- Treesitter: tags (html/jsx)
     ["@tag"] = { fg = p.smooth_navy },
     ["@tag.tsx"] = { fg = p.ash },
-    ["@constructor"] = { fg = p.chill },
-    ["@function.builtin"] = { fg = p.smooth_blue },
+    ["@tag.builtin"] = { fg = p.smooth_navy },
+    ["@tag.attribute"] = { fg = p.chill },
+    ["@tag.delimiter"] = { link = "Delimiter" },
+
+    -- Treesitter: markup (markdown, help, ...)
+    ["@markup.heading"] = { link = "Title" },
+    ["@markup.strong"] = { bold = true },
+    ["@markup.italic"] = { italic = true },
+    ["@markup.strikethrough"] = { strikethrough = true },
+    ["@markup.underline"] = { underline = true },
+    ["@markup.link"] = { fg = p.accent_blue },
+    ["@markup.link.url"] = { fg = p.accent_blue, underline = true },
+    ["@markup.link.label"] = { fg = p.accent_blue },
+    ["@markup.raw"] = { fg = p.wheat },
+    ["@markup.list"] = { fg = p.smooth_blue },
+    ["@markup.quote"] = { fg = p.muted },
+
+    -- Treesitter: comment keywords
+    ["@comment.todo"] = { link = "Todo" },
+    ["@comment.error"] = { fg = p.diagnostic_error, bold = true },
+    ["@comment.warning"] = { fg = p.diagnostic_warn, bold = true },
+    ["@comment.note"] = { fg = p.diagnostic_info, bold = true },
+
+    -- Treesitter: diff
+    ["@diff.plus"] = { fg = u.lighten(p.diff_added_bg, 40) },
+    ["@diff.minus"] = { fg = u.lighten(p.diff_deleted_bg, 40) },
+    ["@diff.delta"] = { fg = p.diff_modified },
+
+    -- LSP semantic tokens
+    ["@lsp.type.class"] = { link = "@type" },
+    ["@lsp.type.decorator"] = { link = "@attribute" },
+    ["@lsp.type.enum"] = { link = "@type" },
+    ["@lsp.type.enumMember"] = { link = "@constant" },
+    ["@lsp.type.function"] = { link = "@function" },
+    ["@lsp.type.interface"] = { link = "@type" },
+    ["@lsp.type.macro"] = { link = "@function.macro" },
+    ["@lsp.type.method"] = { link = "@function.method" },
+    ["@lsp.type.namespace"] = { link = "@module" },
+    ["@lsp.type.parameter"] = { link = "@variable.parameter" },
+    ["@lsp.type.property"] = { link = "@property" },
+    ["@lsp.type.struct"] = { link = "@type" },
+    ["@lsp.type.type"] = { link = "@type" },
+    ["@lsp.type.typeParameter"] = { link = "@type" },
+    ["@lsp.type.variable"] = { link = "@variable" },
 
     -- Git signs
     GitSignsAdd = { fg = u.lighten(p.diff_added_bg, 40) },
@@ -201,9 +291,8 @@ function M.get(p, config)
     QuickFixLine = { fg = p.blue },
 
     -- Telescope
-    TelescopePreviewBorder = { fg = p.muted },
-    TelescopeResultsBorder = { fg = p.muted },
-    TelescopePromptBorder = { fg = p.muted },
+    TelescopeNormal = { link = "Normal" },
+    TelescopeBorder = { fg = p.muted },
 
     TelescopePreviewTitle = { fg = p.wheat },
     TelescopeResultsTitle = { fg = p.wheat },
@@ -211,10 +300,16 @@ function M.get(p, config)
 
     TelescopeMatching = { fg = p.wheat, bold = true },
     TelescopeSelectionCaret = { fg = p.accent_blue },
+    TelescopePromptPrefix = { fg = p.accent_blue },
     TelescopePromptCounter = { fg = p.accent_blue },
 
     TelescopeSelection = { link = "Visual" },
     TelescopePreviewLine = { link = "Visual" },
+    TelescopeMultiSelection = { fg = p.accent_purple },
+    TelescopeMultiIcon = { fg = p.accent_purple },
+
+    TelescopeResultsComment = { fg = p.muted },
+    TelescopeResultsSpecialComment = { fg = p.muted },
 
     -- nvim-pasta
     PastaCursor = { reverse = true },
