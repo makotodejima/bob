@@ -19,7 +19,7 @@ function M.get(p, config)
 
     -- Cursor & current line
     Cursor = { reverse = true },
-    TermCursor = { reverse = true }, -- placeholder
+    TermCursor = { reverse = true },
     CursorLine = { bg = p.highlight_low },
     CursorColumn = { bg = p.highlight_low },
     CursorLineNr = { fg = p.cursor_line_nr, bg = p.highlight_low },
@@ -51,20 +51,20 @@ function M.get(p, config)
     DiffChange = { bg = p.highlight_low },
     DiffDelete = { bg = p.diff_deleted_bg },
     DiffText = { bg = u.lighten(p.diff_added_bg, 2) },
-    Added = { fg = u.lighten(p.diff_added_bg, 40) }, -- placeholder
-    Changed = { fg = p.diff_modified }, -- placeholder
-    Removed = { fg = u.lighten(p.diff_deleted_bg, 40) }, -- placeholder
+    Added = { fg = u.lighten(p.diff_added_bg, 40) },
+    Changed = { fg = p.diff_modified },
+    Removed = { fg = u.lighten(p.diff_deleted_bg, 40) },
 
     -- Messages
     ErrorMsg = { fg = p.text, bg = p.diagnostic_error },
     WarningMsg = { fg = p.red },
     ModeMsg = { fg = p.off_white },
-    MoreMsg = { fg = p.emerald }, -- placeholder
+    MoreMsg = { fg = p.emerald },
     Question = { fg = p.emerald, bold = true },
     MsgSeparator = { link = "WinSeparator" },
-    healthSuccess = { fg = p.emerald }, -- placeholder
-    healthWarning = { fg = p.diagnostic_warn }, -- placeholder
-    healthError = { fg = p.diagnostic_error }, -- placeholder
+    healthSuccess = { fg = p.green },
+    healthWarning = { fg = p.diagnostic_warn },
+    healthError = { fg = p.diagnostic_error },
 
     -- Popup menu
     Pmenu = { bg = p.overlay },
@@ -352,10 +352,6 @@ function M.get(p, config)
     GitSignsChange = { fg = p.wheat },
     GitSignsDelete = { fg = u.lighten(p.diff_deleted_bg, 40) },
 
-    -- nvim-pasta
-    PastaCursor = { reverse = true },
-    PastaEntry = { reverse = true },
-
     -- telescope
     TelescopeNormal = { link = "Normal" },
     TelescopeBorder = { fg = p.muted },
@@ -372,10 +368,6 @@ function M.get(p, config)
     TelescopeMultiIcon = { fg = p.accent_purple },
     TelescopeResultsComment = { fg = p.muted },
     TelescopeResultsSpecialComment = { fg = p.muted },
-
-    -- treesitter-context
-    TreesitterContext = { bg = p.highlight_med },
-    TreesitterContextLineNumber = { fg = p.cursor_line_nr, bg = p.highlight_med }, -- placeholder
   }
 
   if config.transparent then
