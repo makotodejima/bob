@@ -18,11 +18,10 @@ local palette = {
   dark_green = "#2e5440",
 
   -- Blues
-  blue = "#4a7a99",
+  blue = "#214963",
   smooth_blue = "#5670a8",
   smooth_navy = "#4a6682",
   accent_blue = "#6692eb",
-  accent_purple = "#7c9ffa",
 
   -- Warm tones
   eggplant = "#6b4d5c",
@@ -48,7 +47,7 @@ local palette = {
   -- Highlights
   highlight_low = "#171717",
   highlight_med = "#191919",
-  highlight_high = "#333333",
+  highlight_high = "#2a2a2a",
 
   -- Diff
   diff_added_bg = "#0d1c14",

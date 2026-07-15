@@ -33,7 +33,7 @@ function M.get(p, config)
     LineNrAbove = { link = "LineNr" },
     LineNrBelow = { link = "LineNr" },
     SignColumn = { bg = p.base },
-    FoldColumn = { fg = p.accent_purple, bg = p.base },
+    FoldColumn = { fg = p.accent_blue, bg = p.base },
     Folded = { fg = p.muted, bg = p.base },
 
     -- Search & substitute
@@ -151,7 +151,7 @@ function M.get(p, config)
     Debug = { link = "Special" },
 
     Error = { fg = p.text, bg = p.red },
-    Todo = { fg = p.win_separator_bg, bg = p.accent_purple },
+    Todo = { fg = p.win_separator_bg, bg = p.accent_blue },
 
     -- ─── Diagnostics ────────────────────────────────────────────────────────
 
@@ -332,7 +332,7 @@ function M.get(p, config)
     CmpItemKindConstant = { link = "Constant" },
     CmpItemKindKeyword = { link = "Keyword" },
     CmpItemKindVariable = { fg = p.text },
-    CmpItemKindSnippet = { fg = p.accent_purple }, -- placeholder
+    CmpItemKindSnippet = { fg = p.accent_blue }, -- placeholder
 
     -- copilot.vim
     CopilotSuggestion = { fg = p.muted, italic = true }, -- placeholder
@@ -364,8 +364,8 @@ function M.get(p, config)
     TelescopePromptCounter = { fg = p.accent_blue },
     TelescopeSelection = { link = "Visual" },
     TelescopePreviewLine = { link = "Visual" },
-    TelescopeMultiSelection = { fg = p.accent_purple },
-    TelescopeMultiIcon = { fg = p.accent_purple },
+    TelescopeMultiSelection = { fg = p.accent_blue },
+    TelescopeMultiIcon = { fg = p.accent_blue },
     TelescopeResultsComment = { fg = p.muted },
     TelescopeResultsSpecialComment = { fg = p.muted },
   }
